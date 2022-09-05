@@ -1,0 +1,38 @@
+.form-controller-dashboard {
+    padding: 2rem 1rem;
+    display: flex;
+    width: 100%;
+    .controller {
+        padding: 1rem 0;    
+    }   
+}
+
+.p-dropdown {
+    width: 100%;
+}
+
+/* FormDemo.css */
+
+.form-demo .card {
+    min-width: 300px;
+    background: transparent !important;
+}
+.form-demo .card form {
+    margin-top: 2rem;
+}
+.form-demo .card .field {
+    margin-bottom: 1.5rem;
+}
+@media screen and (max-width: 960px) {
+    .form-demo .card {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 640px) {
+    .form-demo .card {
+        width: 100%;
+        min-width: 0;
+    }
+}
+            
+
