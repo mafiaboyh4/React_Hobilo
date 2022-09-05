@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import PrimeReact from 'primereact/api';
 import App from './App';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 PrimeReact.ripple = true;
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

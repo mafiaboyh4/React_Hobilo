@@ -1,226 +1,153 @@
-import React , {useEffect, useState} from 'react';
-import { Dialog } from 'primereact/dialog';
-import { Column } from 'primereact/column';
-import { Paginator } from 'primereact/paginator';
-import { DataTable } from 'primereact/datatable';
 import { Button } from 'primereact/button';
-import create from 'zustand';
-import {useNavigate} from "react-router-dom";
-import useApi from '../../api/useApi';
-import { TradeTypeNameEnum } from '../../enum/allEnums';
-import { checkIsNull } from '../../components/global/checkIsNull';
-import { Tooltip } from 'primereact/tooltip';
+import React , {useEffect, useState} from 'react';
+import './walletsStyle.scss'
 import { toast } from 'react-toastify';
-import { Dropdown } from 'primereact/dropdown';
-import FormInsertMainWallet from './FormInsertMainWallet';
+import { InputNumber } from 'primereact/inputnumber';
+import { PrimeIcons } from 'primereact/api';
 
 const WalletManagementScreen = () => {
-    const { getRequest } = useApi();
 
-    interface StoreInterface {
-        loading: boolean;
-        page: number;
-        total: number;
-        list: any[];
-        listAdmins: any[];
-        selectedMarket?: any;
-        showDialog: boolean;
-        filterType:number;
-        marketType: number;
-        filterNetwork: string|null;
-    };
-
-    const useStore = create<StoreInterface>((set, get) => ({
-        loading: false,
-        page:0,
-        total:0,
-        list:[],
-        listAdmins:[],
-        selectedMarket:null,
-        showDialog:false,
-        marketType:1,
-        filterType:1,
-        filterNetwork:null
-    }));
-
-
-    const getAllWallets =  async (page:number) => {
-        const list = [
-            {
-                username:'Username 1',
-                id:1,
-                walletAddress:'dawhgtjyscewwrw34rfrgb',
-                network:'TRC20',
-            },
-            {
-                username:'Username 2',
-                id:2,
-                walletAddress:'igriojsoifdoiehsohdose',
-                network:'BEP20',
-            },
-            {
-                username:'Username 3',
-                id:3,
-                walletAddress:'uysheofispoaehdfoahe9w894',
-                network:'TRC20',
-            },
-        ];
-        
-        const listAdmin = [
-            {
-                id:1,
-                walletAddress:'uysheofispoaehdfoahe9w894',
-                createdBy:'admin 1',
-                date:'2022/4/12',
-                status:true
-            },
-            {
-                id:2,
-                walletAddress:'fawfawf32bxvesadaw',
-                createdBy:'admin 2',
-                date:'2022/1/13',
-                status:true
-            },
-            {
-                id:3,
-                walletAddress:'fefaedf6aw15d1wa6tfr654e1',
-                createdBy:'admin 3',
-                date:'2022/7/25',
-                status:true
-            },
-          
-        ];
-        useStore.setState({list:list , listAdmins:listAdmin})
-    }
-   
-    const OptionsBodyTemplate = (rowData:any) => {
-        const { listAdmins } = useStore();
-        const status = rowData.status;
-        return (
-            <>
-                <div className="d-flex flex-row">
-                
-                <Button onClick={()=> {
-                       const eList = listAdmins;
-                       const index = eList.findIndex(item => item.id == rowData.id);
-                       eList[index].status = !eList[index].status;
-                       useStore.setState({listAdmins:eList});
-                }} tooltip={status ? 'DeActive':'Active'}  icon={`pi ${status ? 'pi-check-square' : 'pi-times-circle'}`} className={`p-button-rounded  p-button-text ${status ? 'green p-button-success':'red p-button-danger'}`}  tooltipOptions={{  position: 'bottom' }}  />
-                </div>
-            </>
-        );
-    }
-
-    const pageChange = (event:any) => {
-        if (event.page == useStore.getState().page) return;
-        useStore.setState({page:event.first})
-        getAllWallets(event.page)
-    }
-
-    useEffect(() => {
-        getAllWallets(1);
-    }, [])
-
-
-
-    const  DataView = () => {
-        const { list,loading  , total , page , marketType , filterNetwork , listAdmins} = useStore();
-        
-
-        const filterList = () => {
-            return list.filter(item => item.network == filterNetwork)
-        }
-        
-
-        return (
-            <>
-            { marketType == 1 ? <>
-                <DataTable value={!filterNetwork ? list : filterList()} loading={loading} footer={
-                        <Paginator first={page} rows={10} totalRecords={total}  onPageChange={pageChange}></Paginator>
-                    } emptyMessage={`Market Not Found ...`}  responsiveLayout="scroll">
-                        <Column field="id" header="id" body={(data)=> checkIsNull(data , 'id') } ></Column>
-                        <Column field="username" header="username" body={(data)=> checkIsNull(data , 'username') } ></Column>
-                        <Column field="walletAddress" header="walletAddress" body={(data)=> checkIsNull(data , 'walletAddress') } ></Column>
-                        <Column field="network" header="network" body={(data)=> checkIsNull(data , 'network') } ></Column>
-                    </DataTable>
-                </>:<>
-                    <DataTable value={listAdmins} loading={loading} footer={
-                        <Paginator first={page} rows={10} totalRecords={total}  onPageChange={pageChange}></Paginator>
-                    } emptyMessage={`Market Not Found ...`}  responsiveLayout="scroll">
-                        <Column field="walletAddress" header="walletAddress" body={(data)=> checkIsNull(data , 'walletAddress') } ></Column>
-                        <Column field="createdBy" header="createdBy" body={(data)=> checkIsNull(data , 'createdBy') } ></Column>
-                        <Column field="date" header="date" body={(data)=> checkIsNull(data , 'date') } ></Column>
-                        <Column field="status" header="status" body={OptionsBodyTemplate} ></Column>
-                    </DataTable>
-                </>
-            }
-            </>
-        )
+    const [fromSelected, setFromSelected] = useState('USDT');
+    const [toSelected, setToSelected] = useState('Koala');
+    const switchCoin = () => {
 
     }
 
-    const DetailsDialog = () => {
-        const { showDialog } = useStore()
-        return <Dialog header="Create New Market" visible={showDialog} style={{ width: '50vw' }}  onHide={() => useStore.setState({showDialog:false})}>
-               <FormInsertMainWallet  onSubmit={()=> {
-                toast.success('Created')
-                 useStore.setState({showDialog:false});
-               }}/>
-        </Dialog>
+    const onSubmit = () => {
+        toast.info('its Preview')
     }
-
-    const MarketTypes = () => {
-        const {marketType , filterNetwork} = useStore();
-        const MarketTypes = [
-            {label:'Users Wallet' , key:1},
-            {label:'Admins Wallet' , key:2}
-        ];
-
-        const networks = [
-            {label:'All' , key:null},
-            {label:'ERC20' , key:'ERC20'},
-            {label:'TRC20' , key:'TRC20'},
-            {label:'BEP20' , key:'BEP20'}
-        ];
-
-        return (
-            <>
-            <Dropdown value={marketType} optionLabel="label" optionValue='key' options={MarketTypes} onChange={(e)=> {
-                useStore.setState({marketType:e.value})
-            }} />   
-
-            {marketType == 2 ? <>
-                <div className="mx-2"></div>
-                <Button style={{minWidth:'35px' , height:'35px'}} tooltip="add Market" onClick={()=> {
-                        useStore.setState({ showDialog:true})
-                }} icon="pi pi-plus" className='p-button-rounded p-button-help mr-2' tooltipOptions={{  position: 'top' }} />
-            
-                </> : <> 
-                    <div className="mx-2"></div>
-                    <Dropdown value={filterNetwork} optionLabel="label" optionValue='key' options={networks} placeholder="Filter Network" onChange={(e)=> {
-                        useStore.setState({ filterNetwork:e.value})
-                    }} /> 
-                </>}
-            </>
-        )
-    }
-
     return (
         <>
-            <DetailsDialog />
-            
-            <div className="container">
+            <div className=" wallet-controller">
                 <div className="row">
-                    <div className="col-12">
-                        <div className="p-3">
-                            <div className="d-flex flex-row justify-content-between">
-                                <h2>Wallet List Controller</h2>
-                                <div className="d-flex flex-row">
-                                    <MarketTypes />
+                    <div className="col-lg-4 col-md-6">
+                        <div className="box">
+                            <div className="head">
+                                <div className="controller start">
+                                    <img src="http://185.202.113.250/icons/64x64/USDT.png" alt="?" />
+                                    <span className='f-24 fw-b'>USDT<span className="gray ml-2 f-15 fw-n">Tether</span></span>
+                                </div>
+                                <div className="controller mt-3 ">
+                                    <div>
+                                        <span className='f-14 gray'>price : </span><span className='f-16'>0.998</span> 
+                                    </div>
+                                    <div>
+                                        <span className='f-14 gray'>Balance : </span><span className='f-16'> 12 USDT</span>
+                                    </div>
                                 </div>
                             </div>
-                            <DataView />
+                            <div className="controller mt-3">
+                                <div className="flex-1 pr-1">
+                                    <Button label='Deposit' className='tether-1' />
+                                </div>
+                                <div className="flex-1 pl-1">
+                                    <Button className='tether-2' label='Withdraw' />
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <div className="box">
+                            <div className="head">
+                                <div className="controller start">
+                                    <img src="http://185.202.113.250/icons/64x64/BTC.png" alt="?" />
+                                    <span className='f-24 fw-b'>BTC<span className="gray ml-2 f-15 fw-n">Bitcoin</span></span>
+                                </div>
+                                <div className="controller mt-3 ">
+                                    <div>
+                                        <span className='f-14 gray'>price : </span><span className='f-16'>20.132.0 USDT</span> 
+                                    </div>
+                                    <div>
+                                        <span className='f-14 gray'>Balance : </span><span className='f-16'> 0 USDT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="controller mt-3">
+                                <div className="flex-1 pr-1">
+                                    <Button label='Deposit' />
+                                </div>
+                                <div className="flex-1 pl-1">
+                                    <Button className='secondary' label='Withdraw' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
+                        <div className="box">
+                            <div className="head">
+                                <div className="controller start">
+                                    <img src="http://185.202.113.250/icons/64x64/ETH.png" alt="?" />
+                                    <span className='f-24 fw-b'>ETH<span className="gray ml-2 f-15 fw-n">Ethereum</span></span>
+                                </div>
+                                <div className="controller mt-3 ">
+                                    <div>
+                                        <span className='f-14 gray'>price : </span><span className='f-16'>1.565.45 USDT</span> 
+                                    </div>
+                                    <div>
+                                        <span className='f-14 gray'>Balance : </span><span className='f-16'> 0 USDT</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="controller mt-3">
+                                <div className="flex-1 pr-1">
+                                    <Button label='Deposit' className='eth-1' />
+                                </div>
+                                <div className="flex-1 pl-1">
+                                    <Button className='eth-2' label='Withdraw' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-6">
+                        
+                    <div className="swap-controller">
+                            <div className="swap-panel">
+                                <div className="swap-form from">
+                                    <div className="controller">
+                                        <span className="gary f-13">From</span>
+                                         <Button className="p-button-text p-0" >
+                                            <span  className="f-13">Max</span>
+                                         </Button>
+                                    </div>
+                                    <div className="controller">
+                                        <div className="choose-box">
+                                           
+                                             <div className="input-controller">
+                                                <InputNumber min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
+                                             </div>
+                                        </div>
+                                    </div>
+                                    <div  className="controller px-0 justify-content-end">
+                                        <span className="f-14 gary">Available : 
+                                            <span className="blue f-14">s</span> {fromSelected} 
+                                            <span className="blue f-14 cp" >Deposit</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="middle">
+                                    <Button onClick={switchCoin} icon={PrimeIcons.SORT_ALT}  />
+                                </div>
+                                <div className="swap-form to">
+                                    <div className="controller">
+                                        <span className="gary f-13">To</span>
+                                    </div>
+                                    <div className="controller">
+                                        <div className="choose-box">
+                                             <div className="input-controller">
+                                                <InputNumber min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
+                                             </div>
+                                        </div>
+                                    </div>
+                                    <div className="controller px-0 justify-content-start">
+                                        <span  className="f-14 gary">Reference Price: <span className="text">1 Koala Coin = 1 {fromSelected}</span>  </span>
+                                    </div>
+                                </div>
+                                <div className="swap-button">
+                                    <Button label="swap" onClick={onSubmit} />
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef , lazy, Suspense }  from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useRef , Suspense }  from 'react';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import classNames from 'classnames';
-import Dashboard from './pages/Dashboard'
 import Login from './pages/auth/loginScreen';
 
 
@@ -22,17 +21,12 @@ import 'prismjs/themes/prism-coy.css';
 import './assets/demo/flags/flags.css';
 import './assets/demo/Demos.scss';
 import './assets/layout/layout.scss';
-import UsersList from './pages/users/usersList';
+import './assets/styles/fontawesome.css'
+
 import { ToastContainer } from 'react-toastify';
 import RequireAuth from './base/RequireAuth';
-import HistoryScreen from './pages/users/history/historyScreen';
 import { TradeTypeAppUrlEnum } from './enum/allEnums';
-import NetworkManagement from './pages/networks/networkManagement';
-import MarketManagement from './pages/market/MarketManagement';
 import WalletManagement from './pages/wallets/WalletManagement';
-import VipGroupsManagement from './pages/vipGroups/VipGroupsManagement';
-import AnalyzeExchangeScreen from './pages/analyzeExchange/AnalyzeExchangeScreen';
-import TradeManagement from './pages/trade/TradeManagement';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -130,48 +124,10 @@ const App = () => {
 
     const menu = [
         {
-            label: 'Home',
             items: [
-                {label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/dashboard' ,},
-                {label: 'Users', icon: 'pi pi-fw pi-users' ,
-                    items: [
-                    {
-                        label: 'List', icon: 'pi pi-fw pi-users', to: '/users' ,
-                    },
-                    {
-                        label: 'Spot Trades', icon: 'pi pi-fw pi-chart-bar', to: '/spotTrades' ,
-                    },
-                    {
-                        label: 'Futures Trade', icon: 'pi pi-fw pi-chart-line', to: '/FuturesTrade' ,
-                    },
-                ]},
-                {label: 'Network Management', icon: 'pi pi-fw pi-server',  items: [
-                    {
-                        label: 'List', icon: 'pi pi-fw pi-server',  to: '/networkManagement' ,
-                    },
-                    {
-                        label: 'Analyze Network', icon: 'pi pi-fw pi-chart-pie', to: '/analyzeExchange' ,
-                    },
-                ]},
-                {label: 'Market Management', icon: 'pi pi-fw pi-shopping-bag',items: [
-                    {
-                        label: 'List', icon: 'pi pi-fw pi-shopping-bag',  to: '/marketManagement' ,
-                    },
-                    {
-                        label: 'Analyze Market', icon: 'pi pi-fw pi-chart-pie', to: '/analyzeExchange' ,
-                    },
-                ]},
-                {label: 'wallet Management', icon: 'pi pi-fw pi-credit-card',items: [
-                    {
-                        label: 'Admin/User', icon: 'pi pi-fw pi-credit-card',  to: '/walletManagement' ,
-                    },
-                ]},
-                {label: 'vip groups', icon: 'pi pi-fw pi-dollar',items: [
-                    {
-                        label: 'List Groups', icon: 'pi pi-fw pi-dollar',  to: '/vipGroups' ,
-                    },
-                ]},
-                {label: 'Analyze Exchange', icon: 'pi pi-fw pi-chart-pie', to: '/analyzeExchange'},
+                {label: 'Wallets', icon: 'pi pi-fw pi-wallet', to: '/wallets' ,},
+                {label: 'Eduction', icon: 'fa-sharp fa-solid fa-lines-leaning', to: '/eduction' ,},
+                {label: 'Competition', icon: 'pi pi-fw pi-comments', to: '/competition' ,},
             ]
         },
     ];
@@ -207,10 +163,10 @@ const App = () => {
     return (
         <div className={wrapperClass } onClick={onWrapperClick}>
             <ToastContainer />
-            {location.pathname !== '/' && <AppTopbar onToggleMenuClick={onToggleMenuClick} layoutColorMode={layoutColorMode}
+            {location.pathname !== '/login' && <AppTopbar onToggleMenuClick={onToggleMenuClick} layoutColorMode={layoutColorMode}
                 mobileTopbarMenuActive={mobileTopbarMenuActive} onMobileTopbarMenuClick={onMobileTopbarMenuClick} onMobileSubTopbarMenuClick={onMobileSubTopbarMenuClick} />}
 
-            {location.pathname !== '/' && <div className={`layout-sidebar ${location.pathname === '/' && 'd-none'}`} onClick={onSidebarClick}>
+            {location.pathname !== '/login' && <div className={`layout-sidebar ${location.pathname === '/login' && 'd-none'}`} onClick={onSidebarClick}>
                 <AppMenu model={menu} onMenuItemClick={onMenuItemClick} layoutColorMode={layoutColorMode} />
             </div>}
 
@@ -219,25 +175,15 @@ const App = () => {
                   
                     <Suspense fallback={<div>Loading...</div>}>
                         <Routes>
-                            <Route path="/" element={<Login />} />
-                            <Route path="/dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} />
-                            <Route path="/users" element={<RequireAuth><UsersList/></RequireAuth>} />
-                            {tradeTypeMenu.map((router)=> (
-                                <Route path={router.path} element={<RequireAuth><HistoryScreen  historyType={router.key} /></RequireAuth>} />
-                            ))}
-                            <Route path="/networkManagement" element={<RequireAuth><NetworkManagement /></RequireAuth>} />
-                            <Route path="/marketManagement" element={<RequireAuth><MarketManagement /></RequireAuth>} />
-                            <Route path="/walletManagement" element={<RequireAuth><WalletManagement /></RequireAuth>} />
-                            <Route path="/vipGroups" element={<RequireAuth><VipGroupsManagement /></RequireAuth>} />
-                            <Route path="/analyzeExchange" element={<RequireAuth><AnalyzeExchangeScreen /></RequireAuth>} />
-                            <Route path="/spotTrades" element={<RequireAuth><TradeManagement type={1} /></RequireAuth>} />
-                            <Route path="/FuturesTrade" element={<RequireAuth><TradeManagement type={2} /></RequireAuth>} />
-
+                            {/* <Route path="/" element={<Login />} /> */}
+                            <Route path="/" element={<Navigate to="/wallets" replace />} />
+                            <Route path="/wallets" element={<WalletManagement />} />
+                            <Route path="/walletManagement" element={<WalletManagement />} />
                         </Routes>
                     </Suspense>
 
                 </div>
-                {location.pathname !== '/' && <AppFooter layoutColorMode={layoutColorMode} />}
+                {location.pathname !== '/login' && <AppFooter layoutColorMode={layoutColorMode} />}
             </div>
         </div>
     );

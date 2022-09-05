@@ -1,6 +1,6 @@
 :root {
-  --bg:#111111;
-  --text:#fff;
+  --bg:#1d1e27;
+  --text:#FFFFFF;
   --gray:#888888;
   --input-bg:#222222;
   --btn-bg:#470137;
@@ -10,6 +10,12 @@
   --green:#689F38;
   --list-bg:#282828;
   --card-bg:#333333;
+  --primary-color: #b19df7 !important;
+  --second-color:#E99DCB;
+  --focus-ring: 0 0 1px #b19df7 !important;
+  --surface-overlay:#282936 !important;
+  --surface-card:#282936 !important;
+  
 }
 
 @font-face {
@@ -26,7 +32,7 @@
     font-size: 15px;
     padding: 0;
     margin: 0;
-    background: #121212 !important;
+    background: var(--bg) !important;
     height: 100%;
     min-height: 100vh;
   }
@@ -99,6 +105,12 @@
     box-shadow: none !important;
     &:hover {
         opacity: .8;
+    }
+  }
+
+  button {
+    &:focus {
+      box-shadow: none !important;
     }
   }
 
@@ -496,4 +508,30 @@ border: none !important;
 
 .apexcharts-legend-text {
 	color: #fff !important;
+}
+
+@for $i from 10 through 25 {
+  .f-#{$i} {
+      font-size: $i+px !important;
+  }
+}
+
+.fw-b {
+  font-weight: bold;
+}
+
+.fw-n {
+  font-weight: normal;
+}
+
+.flex-1 {
+  display: flex;
+  flex: 1;
+}
+
+.center {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
