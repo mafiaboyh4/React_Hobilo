@@ -4,7 +4,7 @@ export const AppFooter = (props:any) => {
 
     return (
         <div className="layout-footer">
-            <span className="font-medium ml-2">Copyright @ 2022 Hobilo</span>
+            <span className="font-medium ml-2">Copyright @ 2022 Koala</span>
         </div>
     );
 }

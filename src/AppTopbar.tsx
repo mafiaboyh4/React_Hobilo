@@ -1,15 +1,40 @@
-import React  from 'react';
+import React ,  {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
+import { initApp, Store } from './store/index';
 
 
-export const AppTopbar = (props:any) => {
+const AppTopbar = (props:any) => {
     const navigate = useNavigate();
-
+    
     const logout = () => {
         localStorage.removeItem('token');
         navigate('/', { replace: true })
+    }
+
+
+    useEffect(() => {
+        initApp();
+    }, [])
+    
+
+    const ThemeController = () => {
+        const {isDark} = Store();
+        const changeTheme = Store((state) => state.changeTheme);
+        
+        return <>
+          <button className="p-link layout-topbar-button d-lg-none" onClick={() => changeTheme(!isDark)}>
+                <i className={`pi ${isDark ? 'pi-moon':'pi-sun'}`}/>
+            </button>
+            <ul className={classNames("layout-topbar-menu  origin-top", )}>
+                <li>
+                    <button className="p-link layout-topbar-button" onClick={() => changeTheme(!isDark)}>
+                        <i className={`pi ${isDark ? 'pi-moon':'pi-sun'}`}/>
+                    </button>
+                </li>
+            </ul>
+        </>
     }
 
     return (
@@ -20,23 +45,16 @@ export const AppTopbar = (props:any) => {
                 <i className="pi pi-bars"/>
             </button>
 
-            <button type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={props.onMobileTopbarMenuClick}>
-                <i className="pi pi-ellipsis-v" />
-            </button>
 
             <Link to="/dashboard" className="layout-topbar-logo ml-3 pt-1">
-                <span>Hobilo</span>
+                <span>Koala</span>
             </Link>
 
 
-                {/* <ul className={classNames("layout-topbar-menu lg:flex origin-top", {'layout-topbar-menu-mobile-active': props.mobileTopbarMenuActive })}>
-                    <li>
-                        <button className="p-link layout-topbar-button" onClick={logout}>
-                            <i className="pi pi-sign-out"/>
-                            <span>Logout</span>
-                        </button>
-                    </li>
-                </ul> */}
+           <ThemeController />
         </div>
     );
 }
+
+
+export default React.memo(AppTopbar)

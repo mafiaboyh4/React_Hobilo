@@ -1,13 +1,9 @@
 :root {
-  --bg:#1d1e27;
-  --text:#FFFFFF;
-  --gray:#888888;
-  --input-bg:#222222;
-  --btn-bg:#470137;
-  --menu:#27001e;
   --red:#DD5757;
-  --gold:#f8df1f;
   --green:#689F38;
+}
+
+[theme="dark"] {
   --list-bg:#282828;
   --card-bg:#333333;
   --primary-color: #b19df7 !important;
@@ -15,7 +11,32 @@
   --focus-ring: 0 0 1px #b19df7 !important;
   --surface-overlay:#282936 !important;
   --surface-card:#282936 !important;
-  
+  --bg:#1d1e27;
+  --text:#FFFFFF;
+  --gray:#888888;
+  --input-bg:#222222;
+  --btn-bg:#470137;
+  --menu:#27001e;
+  --gold:#f8df1f;
+}
+[theme="light"] {
+  --list-bg:#F6E8DF;
+  --card-bg:#FFFFFF;
+  --primary-color: #FE979C !important;
+  --second-color:#E99DCB;
+  --focus-ring: 0 0 1px #FE979C !important;
+  --surface-overlay:#fff !important;
+  --surface-card:#fff !important;
+  --bg:#F6E8DF;
+  --text:#212121;
+  --gray:#888888;
+  --input-bg:#222222;
+  --btn-bg:#470137;
+  --menu:#27001e;
+  --text-color:#212121 !important;
+  --gold:#e7af64;
+  --text-color-secondary:#888888 !important;
+  --surface-900:#212121 !important;
 }
 
 @font-face {
@@ -24,7 +45,7 @@
   }
   
   body {
-    color: #fff;
+    color: var(--text);
     overflow-x: hidden;
     height: max-content;
     position: relative;
@@ -535,3 +556,8 @@ border: none !important;
   justify-content: center;
   align-items: center;
 }
+
+.p-color {
+  color: var(--primary-color) !important;
+}
+

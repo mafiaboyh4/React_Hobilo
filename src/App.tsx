@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Login from './pages/auth/loginScreen';
 
 
-import { AppTopbar } from './AppTopbar';
+import AppTopbar  from './AppTopbar';
 import { AppFooter } from './AppFooter';
 import { AppMenu } from './AppMenu';
 
@@ -21,7 +21,6 @@ import 'prismjs/themes/prism-coy.css';
 import './assets/demo/flags/flags.css';
 import './assets/demo/Demos.scss';
 import './assets/layout/layout.scss';
-import './assets/styles/fontawesome.css'
 
 import { ToastContainer } from 'react-toastify';
 import RequireAuth from './base/RequireAuth';
