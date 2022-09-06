@@ -1,0 +1,122 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin Wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+
+.room-controller {
+    @include Flex(column);
+    .streaming-controller {
+         @include Flex(row);
+
+        .screen-controller {
+            @include DefaultPanel();
+            flex: 8;
+            .head {
+                @include Wrap();
+                .side {
+                    @include Wrap();
+                    flex: 8;
+                    .controller {
+                        @include Flex(row);
+                    }
+                    .child {
+                        @include Flex(column);
+                        align-items: flex-start;
+                        justify-content: center;
+                        margin-right: 1rem;
+                        .icon-controller {
+                            background: var(--red);
+                            padding: .3rem .8rem;
+                            border-radius: 8px;
+                            @include Flex(column);
+                            align-items: center;
+                            justify-content: center;
+                            span {
+                                color: #fff;
+                            }
+                            svg {
+                                color: #fff;
+                                font-size: 2rem;
+                            }
+                        }
+                    }
+                    &:last-child {
+                        flex:3;
+                        justify-content: space-between;
+                        .controller {
+                            padding: 0 .5rem;
+                        }
+                        span {
+                            font-size: 1rem;
+                            font-weight: 600;
+                            position: relative;
+                            top: .1rem
+                        }
+                    }
+                }
+            }
+            .video-controller {
+                @include Flex(row);
+                width: 100%;
+                padding: 1rem 0;
+                video {
+                    width: 100%;
+                }
+            }
+            .footer-controller {
+                @include Wrap();
+                justify-content: space-between;
+                .side {
+                    @include Wrap();
+                }
+                .child {
+                    @include Flex(column);
+                    justify-content: center;
+                    .profile {
+                        width: 55px;
+                        height: 55px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        border: .25rem solid var(--primary-color)
+                    }
+                    &.time {
+                        position: relative;
+                        top: .1rem;
+                        margin-right: 1rem;
+                    }
+                    .join {
+                        background: var(--bg);
+                        border-color: var(--bg);
+                        color: var(--text);
+                        min-width: 120px;
+                        font-weight: 600;
+                        border-radius: 5px;
+                    }
+                    .rate-controller {
+                        button {
+                          background: transparent;
+                          border: none
+                        }
+                    }
+                }
+            }
+        }
+        .chat-controller {
+            @include DefaultPanel();
+            flex: 4;
+        }
+    }
+
+}

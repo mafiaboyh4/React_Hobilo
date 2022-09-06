@@ -26,6 +26,8 @@ import { ToastContainer } from 'react-toastify';
 import RequireAuth from './base/RequireAuth';
 import { TradeTypeAppUrlEnum } from './enum/allEnums';
 import WalletManagement from './pages/wallets/WalletManagement';
+import EductionScreen from './pages/eduction/EductionScreen';
+import EductionRoomScreen from './pages/eduction/room/EductionRoomScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -127,6 +129,7 @@ const App = () => {
                 {label: 'Wallets', icon: 'pi pi-fw pi-wallet', to: '/wallets' ,},
                 {label: 'Eduction', icon: 'fa-sharp fa-solid fa-lines-leaning', to: '/eduction' ,},
                 {label: 'Competition', icon: 'pi pi-fw pi-comments', to: '/competition' ,},
+                {label: 'Brokers', icon: 'pi pi-fw pi-briefcase', to: '/brokers' ,},
             ]
         },
     ];
@@ -177,7 +180,8 @@ const App = () => {
                             {/* <Route path="/" element={<Login />} /> */}
                             <Route path="/" element={<Navigate to="/wallets" replace />} />
                             <Route path="/wallets" element={<WalletManagement />} />
-                            <Route path="/walletManagement" element={<WalletManagement />} />
+                            <Route path="/eduction" element={<EductionScreen />} />
+                            <Route path="/room/:id" element={<EductionRoomScreen />} />
                         </Routes>
                     </Suspense>
 

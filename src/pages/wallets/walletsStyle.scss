@@ -1,4 +1,4 @@
-@mixin Column ($direction) {
+@mixin Flex ($direction) {
     display: flex;
     flex-direction: $direction;
     width: 100%;
@@ -26,15 +26,15 @@
         }
     }
     
-    @include Column(column);
+    @include Flex(column);
     .box {
-        @include Column(column);
+        @include Flex(column);
         background: var(--surface-overlay);
         padding: 1rem;
         border-radius: 10px;
         min-width: 350px;
         .controller {
-            @include Column(row);
+            @include Flex(row);
             justify-content: space-between;
             align-items: flex-end;
             .fw-b {
@@ -82,7 +82,7 @@
             }
         }
         .head {
-            @include Column(column);
+            @include Flex(column);
             
         }
     }
@@ -247,9 +247,9 @@ overflow: hidden;
 }
 
 .coin-list-swap {
-    @include Column(column);
+    @include Flex(column);
     .item {
-        @include Column(row);
+        @include Flex(row);
         margin-bottom: .8rem ;
         align-items: center;
         &:last-child {

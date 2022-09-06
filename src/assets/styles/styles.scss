@@ -19,13 +19,14 @@
   --menu:#27001e;
   --gold:#f8df1f;
 }
+
 [theme="light"] {
   --list-bg:#F6E8DF;
   --card-bg:#FFFFFF;
   --primary-color: #FE979C !important;
   --second-color:#E99DCB;
   --focus-ring: 0 0 1px #FE979C !important;
-  --surface-overlay:#fff !important;
+  --surface-overlay:#FFFFFF !important;
   --surface-card:#fff !important;
   --bg:#F6E8DF;
   --text:#212121;
@@ -438,13 +439,15 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-.cp {
+@mixin Cp {
   cursor: pointer;
   transition: .6s;
   &:hover {
     opacity: .8;
   }
+}
+.cp {
+ @include Cp();
 }
 
 .p-dropdown , .p-inputtext , .p-inputnumber {
@@ -482,7 +485,7 @@
 .green {
   color: var(--green) !important;
 }
-.gray {
+.gray , .gary {
   color: var(--gray) !important;
 }
 .red , .inValid{
@@ -538,7 +541,7 @@ border: none !important;
 }
 
 .fw-b {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .fw-n {
@@ -561,3 +564,50 @@ border: none !important;
   color: var(--primary-color) !important;
 }
 
+@mixin Event($bg , $color) {
+  background: $bg !important;
+  color: $color !important;
+}
+
+.event-color1 {
+ @include Event(#f0f0fe,#7861f3)
+}
+.event-color2 {
+ @include Event(#fef8ef,#fecc67)
+}
+.event-color3 {
+ @include Event(#e5f9fd,#77dafe)
+}
+
+.event-item-calender {
+  padding: 1rem;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.start {
+  align-items: flex-start
+}
+
+.end {
+  align-items: flex-end
+}
+
+.v-center {
+  align-items: center;
+}
+
+.p-tag {
+  font-size: .8rem !important;
+  font-weight: 500 !important;
+  background: var(--bg) !important;
+  padding-top: .5rem !important;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  @include Cp();
+}
