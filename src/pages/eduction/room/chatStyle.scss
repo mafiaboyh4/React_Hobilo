@@ -1,0 +1,112 @@
+@mixin MsgStyle ($isFrom : false ) {
+    background: var(--bg);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-left: 1rem;
+    position: relative;
+    &::before {
+        content: "";
+
+        @if $isFrom {
+            left: -.6rem !important;
+            clip-path: polygon(0 50%, 100% 100%, 100% 0);
+        } @else {
+            right: -.6rem !important;
+            clip-path:polygon(100% 50%, 0 100%, 0 0)
+        }
+        
+        background: var(--bg);
+        height: 10px;
+        width: 10px;
+        display: block;
+        position: absolute;
+        top: .5rem;
+    }
+}
+
+.main-chat-controller {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .header {
+        display: flex;
+        padding: 1rem;
+        justify-content: center;
+        background: var(--bg);
+        margin-bottom: 1rem;
+    }
+    .list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        min-height: 576px;
+        max-height: 576px;
+        overflow-y: scroll;
+        position: relative;
+        .item {
+            display: flex;
+            flex-direction: row;
+            transition: .6s;
+            margin-bottom: 1rem;
+    
+            img {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+            }
+    
+            .child {
+                display: flex;
+                flex-direction: column;
+                .child .msg {
+                    @include MsgStyle($isFrom :true)
+                 }
+            }
+    
+            &.right {
+                align-items: flex-start;
+                justify-content: flex-start;
+
+                .child .msg {
+                    @include MsgStyle($isFrom :true)
+                }
+                
+            }
+    
+            &.left {
+                flex-direction: row-reverse;
+                .child .msg {
+                margin-right: 1rem;
+                   @include MsgStyle($isFrom :false)
+                }
+            }
+        }
+    }
+
+    .msg-box {
+        background: var(--surface-card);
+        display: flex;
+        flex-direction: row;
+        
+        .input-controller {
+            display: flex;
+            flex: 8;
+            padding-right: .5rem;
+            input {
+                background: var(--bg) !important;
+                outline: none !important;
+                border-color: none !important ;
+                box-shadow: none !important;
+            }
+        }
+
+        button {
+            background: var(--green) !important;
+            border-color: var(--green) !important;
+            
+        }
+    }
+}
