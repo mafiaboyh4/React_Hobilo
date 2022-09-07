@@ -1,0 +1,10 @@
+{
+    "quiz":[
+        {"key":0 ,"answer":null, "title": "What is Bitcoin?" , "answers" :[
+            "it's Coin","it's Token" , "it's NFT","social media"
+        ]},
+        {"key":1 ,"answer":null, "title": "What is Eth?" , "answers" :[
+            "it's Coin","it's Token" , "it's NFT","social media"
+        ]}
+    ]
+}

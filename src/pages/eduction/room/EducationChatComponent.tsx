@@ -17,6 +17,7 @@ const EducationChatComponent = () => {
     const [msg, setMsg] = useState('')
 
     const pushMassage = () => {
+        if (!msg) return
         let list = [...chats];
         list.push({
             isFrom:true,
@@ -34,8 +35,8 @@ const EducationChatComponent = () => {
                     <span className='f-20 fw-b'>Live Chat</span>
                 </div>
                 <div className="list">
-                    {chats.map((item => 
-                        <div className={`item ${item.isFrom ? 'left' :'right'}`}>
+                    {chats.map(((item,index) => 
+                        <div key={index} className={`item ${item.isFrom ? 'left' :'right'}`}>
                             <div className="child start">
                                 <img src={item.isFrom ? MyAvatar : Avatar} />
                             </div>
@@ -51,7 +52,9 @@ const EducationChatComponent = () => {
                     <div className="input-controller">
                         <InputText placeholder='say someting' value={msg} onChange={(e) => setMsg(e.target.value)} />
                     </div>
-                    <Button className='send-msg-btn cp' label='Send' onClick={pushMassage} />
+                    <div>
+                        <Button disabled={!msg} className='send-msg-btn cp' label='Send' onClick={pushMassage} />
+                    </div>
                 </div>
             </div>
         </>
