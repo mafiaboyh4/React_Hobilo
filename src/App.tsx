@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef , Suspense }  from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import classNames from 'classnames';
-import Login from './pages/auth/loginScreen';
-
 
 import AppTopbar  from './AppTopbar';
 import { AppFooter } from './AppFooter';
@@ -28,6 +26,7 @@ import { TradeTypeAppUrlEnum } from './enum/allEnums';
 import WalletManagement from './pages/wallets/WalletManagement';
 import EductionScreen from './pages/eduction/EductionScreen';
 import EductionRoomScreen from './pages/eduction/room/EductionRoomScreen';
+import CompetitionScreen from './pages/competition/CompetitionScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -128,7 +127,7 @@ const App = () => {
             items: [
                 {label: 'Wallets', icon: 'pi pi-fw pi-wallet', to: '/wallets' ,},
                 {label: 'Eduction', icon: 'fa-sharp fa-solid fa-lines-leaning', to: '/eduction' ,},
-                {label: 'Competition', icon: 'pi pi-fw pi-comments', to: '/competition' ,},
+                {label: 'Competition', icon: 'pi pi-fw pi-chart-bar', to: '/competition' ,},
                 {label: 'Brokers', icon: 'pi pi-fw pi-briefcase', to: '/brokers' ,},
             ]
         },
@@ -182,6 +181,7 @@ const App = () => {
                             <Route path="/wallets" element={<WalletManagement />} />
                             <Route path="/eduction" element={<EductionScreen />} />
                             <Route path="/room/:id" element={<EductionRoomScreen />} />
+                            <Route path="/competition" element={<CompetitionScreen />} />
                         </Routes>
                     </Suspense>
 

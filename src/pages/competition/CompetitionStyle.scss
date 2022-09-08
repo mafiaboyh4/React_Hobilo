@@ -1,0 +1,186 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin Wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+.main-competition-controller {
+    @include Flex(column);
+    width: 100%;
+    .box {
+        @include DefaultPanel();
+        align-items: center;
+        height: 100%;
+        justify-content: center ;
+        max-height: 412px;
+         span {
+                color: var(--text) !important;
+            }
+        span.title {
+            font-size: 3rem;
+            color: var(--text);
+        }
+        p {
+            font-size: .9rem;
+            color: var(--text-color);
+        }
+        &.dark {
+            p {
+                color: var(--text-color);
+            }
+            background: var(--card-bg);
+        }
+    }
+    #SvgjsSvg1043 , svg {
+        background: transparent !important;
+    }
+    
+    .apexcharts-menu , .apexcharts-menu-item{
+        background: var(--surface-card) !important;
+        border: none !important;
+    }
+
+    .list-competitions-controller {
+        @include Wrap();
+        position: relative;
+        margin-top: 1rem;
+        max-height: 412px;
+        overflow-y: scroll;
+        .p-accordion , .p-accordion-header-text {
+            width: 100%;
+        }
+        .p-accordion-toggle-icon {
+            display: none !important;
+        }
+      
+
+       .item {
+        width: 100%;
+        padding-top: 0 !important;
+        .header-controller {
+            @include Flex(row);
+            justify-content: space-between;
+            align-items: center;
+            padding: .5rem 1rem .5rem;
+            width: 100%;
+            .child {
+            @include Flex(column);
+            align-items: flex-start;
+            &:nth-child(2) {
+                flex: 7;
+                span.h-title {
+                    color: var(--text);
+                    margin-bottom: .5rem;
+                }
+            }
+            &:first-child {
+                flex: 1;
+                align-items: center;
+                justify-content: center;
+                .symbol-controller {
+                    background: var(--primary-color);
+                    border-radius: 50%;
+                    width: 35px;
+                    height: 35px;
+                    @include Flex(row);
+                    align-items: center;
+                    justify-content: center;
+                }
+
+            }
+        }
+       }
+        .time-controller {
+            @include Flex(column);
+            border-top: 2px solid var(--bg);
+            border-bottom: 2px dashed var(--bg);
+            padding-top: 1rem;
+            width: 100%;
+
+            .controller {
+                margin-bottom: .5rem;
+                &:first-child {
+                    margin-bottom: .8rem;
+                }
+                i {
+                    margin-right: 1rem;
+                }
+                @include Flex(row);
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+       }
+
+       .point-controller {
+            width: 100%;
+           @include Flex(column);
+           padding: 1rem;
+           align-items: flex-start;
+           justify-content: flex-start;
+            border-bottom: 2px solid var(--bg);
+            margin-bottom: 1rem;
+            .controller {
+                @include Flex(row);
+                justify-content: space-between;
+                width: 100%;
+                align-items: center;
+                &:first-child {
+                    margin-bottom: .8rem;
+                }
+            }
+       }
+
+       .button-controller {
+        @include Flex(row);
+        width: 100%;
+        .controller {
+            display: flex;
+            flex: 1;
+            width: 100%;
+            max-width: 50%;
+        }
+        button {
+            width: 100%;
+            border: none !important;
+            span {
+                color: #fff !important ;
+
+            }
+            &.deposit {
+                background: #3A3E59 !important;
+                outline: #3A3E59 !important;
+            }
+
+            &.start {
+                background: var(--green) !important;
+                outline: #EcE6ce !important;
+                color: #212121 ;
+            }
+        }
+       }
+    }
+
+    .p-accordion .p-accordion-header .p-accordion-header-link , .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link , .p-accordion .p-accordion-content {
+        background: var(--surface-card);
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .p-accordion .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link {
+        background: var(--surface-card) !important;
+        opacity: .8;
+    }
+    .p-accordion .p-accordion-tab .p-accordion-content {
+        padding: 0 !important;
+    }
+}
