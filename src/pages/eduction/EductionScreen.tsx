@@ -98,7 +98,9 @@ const EductionScreen = () => {
                                     <span className="f-14">Crypto News and analyze Market</span>
                                 </div>
                             </div>
-                            <Button label='Join Now' />
+                            <Button label='Join Now' onClick={()=> {
+                                 nav('/room/'+roomId.current);
+                            }}/>
                         </div>
                     </div>
                   </div>

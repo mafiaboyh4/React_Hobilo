@@ -18,6 +18,7 @@
   --btn-bg:#470137;
   --menu:#27001e;
   --gold:#f8df1f;
+  --shadowList:inset 4px 66px 46px #1d1e279c , 0 0 30px #1d1e279c;
 }
 
 [theme="light"] {
@@ -38,6 +39,8 @@
   --gold:#e7af64;
   --text-color-secondary:#888888 !important;
   --surface-900:#212121 !important;
+  --shadowList:inset 4px 66px 46px #f6e8dfb1 , 0 0 30px #f6e8dfb1;
+
 }
 
 @font-face {
@@ -608,6 +611,23 @@ border: none !important;
   padding-top: .5rem !important;
   display: flex;
   align-items: center;
+  color: var(--text) !important;
   border-radius: 5px;
   @include Cp();
+}
+
+button {
+  color: var(--text);
+}
+
+input { 
+  color: var(--text) !important;
+}
+
+.no-scroll-bar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

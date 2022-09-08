@@ -130,7 +130,8 @@
     .quiz-answer {
         @include DefaultPanel();
         max-width: 400px;
-        margin-top: 1rem;
+        height: 100%;
+        justify-content: space-between;
         .head {
             @include Flex(column);
             .progress-controller {
@@ -227,7 +228,7 @@
     }
     .p-progressbar .p-progressbar-value {
         @include GradientBg();
-
+        border-radius: 0 5px 5px 0;
     }
 }
 

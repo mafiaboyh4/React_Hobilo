@@ -1,0 +1,137 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin Wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+
+
+.ranking-table-controller {
+    @include DefaultPanel();
+    max-width: 450px;
+    width: 100%;
+    padding-top: 1rem;
+    position: relative;
+    .header-title {
+        font-size: 1.5rem;
+        @include Flex(row);
+        justify-content: center;
+        font-weight: 500;
+        margin-bottom: 4rem;
+    }
+    .top-traders {
+        position: relative;
+        @include Flex(row);
+        min-width: 300px;
+        max-width: fit-content;
+        margin: auto;
+        justify-content: space-around;
+        
+        .trader {
+            @include Flex(column);
+            color: var(--text);
+            align-items: center;
+            font-size: 1.1rem;
+            svg {
+                position: relative;
+                bottom: .5rem;
+                left: 1px;
+            }
+            img {
+                width: 30px;
+                margin-bottom: 1rem;
+            }
+            .profile-controller {
+                width: 85px;
+                height: 85px;
+                border-radius: 50%;
+                img {
+                    border: .3rem solid var(--primary-color);
+                    width: 100%;
+                    border-radius: 50%;
+
+                }
+            }
+            &.first {
+                position: absolute;
+                z-index: 2;
+                bottom: 30px;
+                .profile-controller {
+                    width: 100px;
+                    height: 100px;
+                    box-shadow: 0 0 12px var(--primary-color);
+                }
+                .username-controller {
+                    position: relative;
+                    top: 10px;
+                }
+            }
+        }
+    }
+    .shadow-panel {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        opacity: .5;
+        z-index: 1;
+        height: 80px;
+        border-radius: 16px 16px 0 0;
+        box-shadow: var(--shadowList);
+        backdrop-filter: blur(1.3px);
+        background: transparent;
+    }
+    .other-traders {
+        margin-top: 2.5rem;
+        padding: 0 ;
+        max-height: 245px;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        position: relative;
+       
+        .item {
+            @include Flex(row);
+            margin-bottom: 1rem;
+            justify-content: space-between;
+            .user-details {
+                background: var(--bg);
+                @include Flex(row);
+                border-radius: 20px;
+                justify-content: space-between;
+                align-items: center;
+                flex: 8;
+                color: var(--text);
+                padding-right: 1rem;
+                max-height: 49px;
+                img {
+                    width: 45px;
+                    height: 45px;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 50%;
+                }
+            }
+            .rank {
+                flex: 1;
+                @include Flex(column);
+                align-items: flex-start;
+                svg {
+                    position: relative;
+                    right: 12px;
+                }
+                
+            }
+        }
+    }
+}
