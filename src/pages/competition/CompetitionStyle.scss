@@ -54,7 +54,7 @@
         @include Wrap();
         position: relative;
         margin-top: 1rem;
-        max-height: 412px;
+        max-height: 825px;
         overflow-y: scroll;
         .p-accordion , .p-accordion-header-text {
             width: 100%;
@@ -65,22 +65,24 @@
       
 
        .item {
+        @include DefaultPanel();
+
         width: 100%;
         padding-top: 0 !important;
         .header-controller {
             @include Flex(row);
             justify-content: space-between;
             align-items: center;
-            padding: .5rem 1rem .5rem;
+            padding: .5rem 0 .5rem;
             width: 100%;
             .child {
             @include Flex(column);
             align-items: flex-start;
             &:nth-child(2) {
                 flex: 7;
+                padding-top: .5rem;
                 span.h-title {
                     color: var(--text);
-                    margin-bottom: .5rem;
                 }
             }
             &:first-child {
@@ -89,9 +91,12 @@
                 justify-content: center;
                 .symbol-controller {
                     background: var(--primary-color);
+                    color: var(--bg);
                     border-radius: 50%;
                     width: 35px;
                     height: 35px;
+                    font-weight: bolder;
+                    font-size: 1.2rem;
                     @include Flex(row);
                     align-items: center;
                     justify-content: center;
@@ -125,7 +130,7 @@
        .point-controller {
             width: 100%;
            @include Flex(column);
-           padding: 1rem;
+           padding: 1rem 0;
            align-items: flex-start;
            justify-content: flex-start;
             border-bottom: 2px solid var(--bg);

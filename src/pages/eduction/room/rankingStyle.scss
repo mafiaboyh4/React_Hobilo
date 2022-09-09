@@ -18,7 +18,7 @@
 
 .ranking-table-controller {
     @include DefaultPanel();
-    max-width: 450px;
+    max-width: 100%;
     width: 100%;
     padding-top: 1rem;
     position: relative;
@@ -99,11 +99,19 @@
         overflow-x: hidden;
         overflow-y: scroll;
         position: relative;
-       
+        @include Flex(column);
+        width: 100%;
+        align-items: center;
+       &.max {
+         max-height: 434px;
+        
+       }
         .item {
             @include Flex(row);
             margin-bottom: 1rem;
             justify-content: space-between;
+            width: 100%;
+            max-width: 440px;
             .user-details {
                 background: var(--bg);
                 @include Flex(row);

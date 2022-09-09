@@ -36,7 +36,7 @@ const CompetitionChartComponent = () => {
             dashArray: [0, 8, 5]
           },
           title: {
-            text: 'Competition Analyze',
+            text: 'Competitions Analyze',
             align: 'left'
           },
           legend: {

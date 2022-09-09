@@ -8,9 +8,10 @@ import koalaIcon from '../../assets/imgs/koalaIcon.png';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import QRCode from "react-qr-code";
 
 const WalletManagementScreen = () => {
-
+    const op = useRef<OverlayPanel>(null);
     const [fromSelected, setFromSelected] = useState('USDT');
     const [toSelected, setToSelected] = useState('Koala');
     const coinsPanelFrom = useRef<OverlayPanel>(null);
@@ -68,6 +69,19 @@ const WalletManagementScreen = () => {
 
     return (
         <>
+        <OverlayPanel
+            ref={op}
+            id="overlay_panel"
+            dismissable
+            style={{ width: "300px" }}
+            className="overlaypanel-demo"
+          > 
+
+            <div className="qr-code-controller">
+                <span>Scan Qr</span>
+                <QRCode value="dwjkapojdfipawfipaipwjfiawhf" />
+            </div>
+          </OverlayPanel>
             <div className=" wallet-controller">
                 <div className="row">
                   {coins.map((item) => 
@@ -89,7 +103,11 @@ const WalletManagementScreen = () => {
                             </div>
                             <div className="controller mt-3">
                                 <div className="flex-1 pr-1">
-                                    <Button label='Deposit' className={item.class1} />
+                                    <Button label='Deposit'
+                                     onClick={(e) => op.current?.toggle(e)}
+                                     aria-haspopup
+                                     aria-controls="overlay_panel"
+                                    className={item.class1} />
                                 </div>
                                 <div className="flex-1 pl-1">
                                     <Button className={item.class2} label='Withdraw' />
@@ -148,7 +166,11 @@ const WalletManagementScreen = () => {
                                     <div  className="controller px-0 justify-content-end">
                                         <span className="f-14 gary">Available : 
                                             <span className="p-color f-14"> 0 </span> {fromSelected} 
-                                            <span className="p-color f-14 cp ml-2" >Deposit</span>
+                                            <span
+                                             onClick={(e) => op.current?.toggle(e)}
+                                             aria-haspopup
+                                             aria-controls="overlay_panel"
+                                            className="p-color f-14 cp ml-2" >Deposit</span>
                                         </span>
                                     </div>
                                 </div>

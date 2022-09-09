@@ -27,6 +27,8 @@ import WalletManagement from './pages/wallets/WalletManagement';
 import EductionScreen from './pages/eduction/EductionScreen';
 import EductionRoomScreen from './pages/eduction/room/EductionRoomScreen';
 import CompetitionScreen from './pages/competition/CompetitionScreen';
+import CompetitionDetailsScreen from './pages/competition/competitionDetails/CompetitionDetailsScreen';
+import BrokersScreen from './pages/brokers/BrokersScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -182,6 +184,8 @@ const App = () => {
                             <Route path="/eduction" element={<EductionScreen />} />
                             <Route path="/room/:id" element={<EductionRoomScreen />} />
                             <Route path="/competition" element={<CompetitionScreen />} />
+                            <Route path="/competitionDetails/:id" element={<CompetitionDetailsScreen />} />
+                            <Route path="/brokers" element={<BrokersScreen />} />
                         </Routes>
                     </Suspense>
 

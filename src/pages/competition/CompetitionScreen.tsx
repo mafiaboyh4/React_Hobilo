@@ -5,6 +5,7 @@ import CompetitionChartComponent from './CompetitionChartComponent';
 import './CompetitionStyle.scss'
 import { Store } from './../../store/index';
 import ListCompetitionsComponent from './ListCompetitionsComponent';
+import event1 from '../../assets/imgs/event1.jpg';
 
 const CompetitionScreen = () => {
     const {isDark} = Store()
@@ -82,8 +83,10 @@ const CompetitionScreen = () => {
                    
                     <div className="col-lg-6">
                         <CompetitionChartComponent />
+                        <img className='cp mt-3' width={'100%'} height={'400px'} style={{objectFit:'cover'}} src={event1}/>
+
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-lg-6 px-1">
                         <ListCompetitionsComponent />
                     </div>
                 </div>

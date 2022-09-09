@@ -1,0 +1,9 @@
+{
+    "data":[
+        {"index":1,"name":"eToro" , "score":4.8 , "minimumDeposit":50 , "freeScore":4.4},
+        {"index":2,"name":"TradeStation" , "score":4.5 , "minimumDeposit": 0 , "freeScore":4},
+        {"index":3,"name":"Eightcap" , "score":4.4 , "minimumDeposit": 100 , "freeScore":4.5},
+        {"index":4,"name":"Swissquote" , "score":4.6 , "minimumDeposit": 0 , "freeScore":2.4},
+        {"index":5,"name":"Capital.com" , "score":4.7 , "minimumDeposit": 20 , "freeScore":4.4}
+    ]
+}

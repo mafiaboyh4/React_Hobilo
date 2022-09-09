@@ -19,7 +19,7 @@ import user8 from '../../../assets/imgs/users/user8.jpg'
 import user9 from '../../../assets/imgs/users/user9.jpg'
 import {data} from './users.json';
 
-const EducationRanking = () => {
+const EducationRanking = ({isMax = false} : {isMax:boolean }) => {
 
     const users = [...data]
     const getUrl = (index:number) => {
@@ -95,9 +95,9 @@ const EducationRanking = () => {
                         </span>
                     </div>
                 </div>
-                <div className="other-traders no-scroll-bar">
+                <div className={`other-traders no-scroll-bar ${isMax && 'max'}`} >
                     {users.map((item , index)=> 
-                        <div className="item cp">
+                        <div className={`item cp ${isMax && 'px-md-5'}`}>
                             <div className="rank">
                                 <span className={`${item.change > 0 ? 'green':'red'}`} >{Math.round(item.change)}</span>
                                 {item.change > 0 ? <ArrowDropUp fontSize="large" className='green' /> : <ArrowDropDown fontSize="large" className="red"  /> }

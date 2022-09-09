@@ -1,0 +1,72 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin Wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+
+
+.main-brokers-list {
+    .p-datatable {
+        width: 100%;
+    }
+     .p-datatable .p-datatable-tbody > tr > td {
+        color: var(--text) !important;
+        background: var(--surface-card) !important;
+        border-color: var(--dark-border) !important;
+
+      }
+
+      .p-datatable .p-datatable-thead > tr > th {
+        background: var(--bg) !important;
+        border-color: var(--dark-border) !important;
+        color: var(--text);
+      }
+
+      @include Flex(column);
+      width: 100%;
+      .box {
+          @include DefaultPanel();
+          align-items: flex-start;
+          height: 100%;
+          justify-content: center ;
+
+          .company-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+          }
+          a {
+            color: var(--text) ;
+            transition: .6s;
+            &:hover {
+                color: var(--primary-color);
+            }
+          }
+          .bg-danger {
+            background: rgba(227,169,0,.15) !important;
+            color: #e3a900 !important;
+            padding: .5rem .8rem;
+            border-radius: 10px;
+            font-weight: bold;
+          }
+
+          .bg-susses {
+            background: rgba(59,178,115,.15) !important;
+            color: #3bb273 !important;
+            padding: .5rem .8rem;
+            border-radius: 10px;
+            font-weight: bold;
+          }
+      }
+}

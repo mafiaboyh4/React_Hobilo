@@ -110,12 +110,11 @@ const EductionRoomScreen = () => {
                       <EductionQuiz />
                     </div>    
                     <div className="col-lg-3 px-1">
-                      <EducationRankingComponent />
+                      <EducationRankingComponent isMax={false} />
                     </div>
                     <div className="col-lg-6 px-1">
                         <img className='cp mt-1' style={{maxHeight:'300px',objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={event2}/>
                         <img className='cp mt-2' style={{maxHeight:'308px',objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={event3}/>
-
                     </div>
                 </div> 
             </div> 

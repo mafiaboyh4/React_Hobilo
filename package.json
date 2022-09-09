@@ -16,6 +16,7 @@
     "babel-plugin-react-scoped-css": "^1.1.1",
     "chart.js": "3.3.2",
     "classnames": "^2.2.6",
+    "count-down-react": "^1.0.12",
     "craco-plugin-scoped-css": "^1.1.1",
     "final-form": "^4.20.7",
     "formik": "^2.2.9",
@@ -27,6 +28,7 @@
     "react": "^18.0.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18.0.0",
+    "react-qr-code": "^2.0.7",
     "react-router-dom": "^6.3.0",
     "react-toastify": "^9.0.5",
     "zustand": "^4.0.0-rc.1"
