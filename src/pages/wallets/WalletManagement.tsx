@@ -16,7 +16,7 @@ const WalletManagementScreen = () => {
     const [toSelected, setToSelected] = useState('Koala');
     const coinsPanelFrom = useRef<OverlayPanel>(null);
     const coins = [
-        {symbol: 'USDT' , name:'Tether' , price:'0.998' , balance:'12' , class1:'tether-1' , class2:'tether-2'},
+        {symbol: 'USDT' , name:'Tether' , price:'0.998' , balance:'300' , class1:'tether-1' , class2:'tether-2'},
         {symbol: 'BTC' , name:'Bitcoin' , price:'20.132.0' , balance:'0' , class1:'' , class2:'secondary'},
         {symbol: 'ETH' , name:'Ethereum' , price:'1.565.45' , balance:'0' , class1:'eth-1' , class2:'eth-2'},
     ];

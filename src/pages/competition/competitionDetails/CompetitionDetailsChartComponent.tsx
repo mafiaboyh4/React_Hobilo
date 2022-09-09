@@ -4,7 +4,7 @@ import ReactApexChart from 'react-apexcharts';
 import { Store } from './../../../store/index';
 import {dataSeries} from './dataSeries.json';
 
-const CompetitionDetailsChartComponent = () => {
+const CompetitionDetailsChartComponent = ({title} : {title:string}) => {
   const {isDark} = Store()
     const [state, setState] = useState<any>();
 
@@ -54,7 +54,7 @@ const CompetitionDetailsChartComponent = () => {
               size: 0,
             },
             title: {
-              text: 'Analyze Chart',
+              text: title,
               align: 'left'
             },
             fill: {

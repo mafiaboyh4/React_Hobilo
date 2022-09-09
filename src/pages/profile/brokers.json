@@ -1,0 +1,6 @@
+{
+    "data":[
+        {"index":1,"name":"eToro" , "point":120 , "totalDeposit":50 },
+        {"index":2,"name":"TradeStation" , "point":0 , "totalDeposit": 0 }
+    ]
+}

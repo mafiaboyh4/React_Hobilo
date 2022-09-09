@@ -83,7 +83,7 @@ const CompetitionDetailsScreen = () => {
                                 <CountDown date={date1} renderer={CoundownRenderer} />
                             </div>
                             <div className="box">
-                            <CompetitionDetailsChartComponent />
+                                <CompetitionDetailsChartComponent title='Activity Analyze' />
                             </div>
                         </div>
                         <div className="col-lg-6 px-1 ">
