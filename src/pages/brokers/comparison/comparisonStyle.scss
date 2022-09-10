@@ -44,6 +44,7 @@
 
       @include Flex(column);
       width: 100%;
+      align-items: center;
       .head {
         @include Flex(column);
         margin: auto;
@@ -63,17 +64,38 @@
 
       .box {
         @include DefaultPanel();
-        .p-dropdown {
-            background: var(--bg);
-            max-width: 300px;
-            height: 55px;
-            @include Flex(row);
-            align-items: center;
+        max-width: 756px;
+        width: 100%;
+        .p-accordion .p-accordion-tab:first-child .p-accordion-header .p-accordion-header-link , .p-accordion .p-accordion-content , .p-accordion .p-accordion-tab:not(:first-child) .p-accordion-header .p-accordion-header-link {
+            background: transparent !important;
+            border: none;
+            border-bottom: .15rem solid var(--dark-border);
+            box-shadow: none !important;
+            color: var(--text);
         }
 
+        .p-accordion .p-accordion-content {
+            border: none;
+        }
+        .p-dropdown {
+            color: var(--text) !important;
+            max-width: 300px;
+            height: 55px;
+            background: var(--surface-card);
+            border-color: var(--dark-border) !important;
+            @include Flex(row);
+            align-items: center;
+            .p-dropdown-label {
+                color: var(--text) !important;
+
+            }
+        }
+       
         .p-dropdown .p-dropdown-trigger {
             border-left: 1px solid var(--dark-border);
             height: 40px;
+            color: var(--text) !important;
+
         }
 
 

@@ -98,7 +98,7 @@ const BrokersScreen = () => {
                                     <div className="pt-4"></div>
                                     <BrokerNameTemplate {...item} />
                                     <div className="controller center pt-3">
-                                        <RatingTemplate score={item.score} percent={100 - (index * 4)} />
+                                        <RatingTemplate score={item.score} percent={(item.score * 20)} />
                                     </div>
                                     <div className="controller center py-3 px-3">
                                         <p className='text-center f-14 '>Recommended for traders looking for broad market access and a professional trading environment minimum Deposit {item.minimumDeposit}</p>

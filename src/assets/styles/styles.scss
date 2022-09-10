@@ -26,7 +26,7 @@
 [theme="light"] {
   --list-bg:#eff3f8;
   --card-bg:#FFFFFF;
-  --primary-color: #b19df7 !important;
+  --primary-color: #7d50b9 !important;
   --second-color:#7254f3;
   --focus-ring: 0 0 1px #7254f3 !important;
   --surface-overlay:#FFFFFF !important;
@@ -709,5 +709,25 @@ input {
     &:last-child {
       border-right: none;
     }
+  }
+}
+
+.p-dropdown-panel {
+  background: var(--surface-card) !important;
+  color: var(--text) !important;
+  border-color: var(--dark-border) !important;
+  .p-dropdown-items {
+    padding: 0 !important;
+  }
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight , .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  color: var(--text) !important;
+}
+
+.p-overlaypanel {
+  &::before , &::after {
+    border-color: var(--bg) ;
+    border-bottom-color: var(--bg) ;
+    border-top-color: var(--bg) ;
   }
 }
