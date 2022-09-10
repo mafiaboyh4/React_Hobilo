@@ -102,7 +102,7 @@ const CompetitionChartComponent = () => {
     return (
         <>
         <div className="mt-3 box">
-            <div className="chart-controller">
+            <div className="chart-controller w-100">
                 <ReactApexChart options={state.options} series={state.series} type="line" height={350} />
             </div>
         </div>

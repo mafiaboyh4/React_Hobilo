@@ -251,6 +251,7 @@ overflow: hidden;
         @include Flex(row);
         margin-bottom: .8rem ;
         align-items: center;
+        color: var(--text);
         &:last-child {
             margin-bottom:0 ;
         }

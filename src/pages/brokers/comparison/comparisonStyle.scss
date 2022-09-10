@@ -1,0 +1,102 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin Wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+
+@mixin BtnStyle {
+    font-size: 14px;
+    background: #3A3E59 !important;
+    outline: #3A3E59 !important;
+    border: none;
+    height: 40px;
+    padding-top: 1rem;
+}
+
+
+.main-comparison-controller {
+    .p-datatable {
+        width: 100%;
+    }
+     .p-datatable .p-datatable-tbody > tr > td {
+        color: var(--text) !important;
+        background: var(--surface-card) !important;
+        border-color: var(--dark-border) !important;
+
+      }
+
+      .p-datatable .p-datatable-thead > tr > th {
+        background: var(--bg) !important;
+        border-color: var(--dark-border) !important;
+        color: var(--text);
+      }
+
+      @include Flex(column);
+      width: 100%;
+      .head {
+        @include Flex(column);
+        margin: auto;
+        align-items: center;
+        .subtitle {
+          font-size: 1.2rem;
+          color: var(--gray);
+          padding-bottom: 1rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+          font-weight: 600;
+          padding-bottom: 1rem;
+          border-bottom: .15rem solid var(--primary-color)
+        }
+      }
+
+      .box {
+        @include DefaultPanel();
+        .p-dropdown {
+            background: var(--bg);
+            max-width: 300px;
+            height: 55px;
+            @include Flex(row);
+            align-items: center;
+        }
+
+        .p-dropdown .p-dropdown-trigger {
+            border-left: 1px solid var(--dark-border);
+            height: 40px;
+        }
+
+
+        .child {
+            @include Flex(column);
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            img {
+                width: 65px;
+                height: 65px;
+            }
+
+            .sing-up {
+                @include BtnStyle();
+            }
+
+            .h-line {
+                width: 100%;
+                display: block;
+                height: 2px;
+                background: var(--dark-border);
+            }
+        }
+      }
+}

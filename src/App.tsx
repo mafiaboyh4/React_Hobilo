@@ -31,6 +31,7 @@ import CompetitionDetailsScreen from './pages/competition/competitionDetails/Com
 import BrokersScreen from './pages/brokers/BrokersScreen';
 import ProfileScreen from './pages/profile/ProfileScreen';
 import BrokerDetailsScreen from './pages/brokers/brokerDetails/brokerDetailsScreen';
+import ComparisonScreen from './pages/brokers/comparison/ComparisonScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -132,7 +133,10 @@ const App = () => {
                 {label: 'Wallets', icon: 'pi pi-fw pi-wallet', to: '/wallets' ,},
                 {label: 'Eduction', icon: 'fa-sharp fa-solid fa-lines-leaning', to: '/eduction' ,},
                 {label: 'Competition', icon: 'pi pi-fw pi-chart-bar', to: '/competition' ,},
-                {label: 'Brokers', icon: 'pi pi-fw pi-briefcase', to: '/brokers' ,},
+                {label: 'Brokers', icon: 'pi pi-fw pi-briefcase' , items: [
+                    { label: 'List', icon: 'pi pi-fw pi-list', to: '/brokers' },
+                    { label: 'Comparison', icon: 'pi pi-fw pi-arrows-h', to: '/comparison' },
+                ]},
             ]
         },
     ];
@@ -190,6 +194,7 @@ const App = () => {
                             <Route path="/brokers" element={<BrokersScreen />} />
                             <Route path='/profile' element={<ProfileScreen/>} />
                             <Route path='/brokerDetails/:id' element={<BrokerDetailsScreen />} />
+                            <Route path='/comparison' element={<ComparisonScreen />} />
                         </Routes>
                     </Suspense>
 
