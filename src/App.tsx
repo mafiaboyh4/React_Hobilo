@@ -30,6 +30,7 @@ import CompetitionScreen from './pages/competition/CompetitionScreen';
 import CompetitionDetailsScreen from './pages/competition/competitionDetails/CompetitionDetailsScreen';
 import BrokersScreen from './pages/brokers/BrokersScreen';
 import ProfileScreen from './pages/profile/ProfileScreen';
+import BrokerDetailsScreen from './pages/brokers/brokerDetails/brokerDetailsScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -188,6 +189,7 @@ const App = () => {
                             <Route path="/competitionDetails/:id" element={<CompetitionDetailsScreen />} />
                             <Route path="/brokers" element={<BrokersScreen />} />
                             <Route path='/profile' element={<ProfileScreen/>} />
+                            <Route path='/brokerDetails/:id' element={<BrokerDetailsScreen />} />
                         </Routes>
                     </Suspense>
 

@@ -3,11 +3,6 @@
     flex-direction: $direction;
 }
 
-@mixin Wrap {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 @mixin DefaultPanel {
     padding: 1rem;
     background: var(--surface-card);
@@ -35,38 +30,71 @@
 
       @include Flex(column);
       width: 100%;
+      .head {
+        @include Flex(column);
+        margin: auto;
+        max-width: 400px;
+        align-items: center;
+        .subtitle {
+          font-size: 1.2rem;
+          color: var(--gray);
+          padding-bottom: 1rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+          font-weight: 600;
+          padding-bottom: 1rem;
+          border-bottom: .15rem solid var(--primary-color)
+        }
+      }
+
       .box {
           @include DefaultPanel();
           align-items: flex-start;
           height: 100%;
           justify-content: center ;
 
-          .company-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-          }
-          a {
-            color: var(--text) ;
-            transition: .6s;
-            &:hover {
-                color: var(--primary-color);
+          .btn-controller  {
+            @include Flex(column);
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            .review {
+              cursor: pointer;
+              padding-bottom: .3rem;
+              transition: .6s;
+              &:hover {
+                color: var(--green);
+                border-bottom: 1px solid var(--green);
+              }
+            }
+            button {
+              font-size: 14px;
+              background: #3A3E59 !important;
+              outline: #3A3E59 !important;
+              border: none;
+              margin-bottom: 1rem;
             }
           }
-          .bg-danger {
-            background: rgba(227,169,0,.15) !important;
-            color: #e3a900 !important;
-            padding: .5rem .8rem;
-            border-radius: 10px;
-            font-weight: bold;
-          }
 
-          .bg-susses {
-            background: rgba(59,178,115,.15) !important;
-            color: #3bb273 !important;
-            padding: .5rem .8rem;
-            border-radius: 10px;
-            font-weight: bold;
+         .controller {
+          @include Flex(row);
+          width: 100%;
+          &.column {
+            @include Flex(column);
+            justify-content: center;
+            align-items: center;
+            span {
+              font-size: 1.1rem;
+              font-weight: 600;
+            }
+            img {
+              width: 60px;
+              height: 60px;
+              border-radius: 10px;
+              margin-bottom: .5rem;
+            }
           }
+         }
       }
 }
