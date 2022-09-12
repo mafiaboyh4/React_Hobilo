@@ -2,26 +2,123 @@ import { PrimeIcons } from 'primereact/api';
 import React from 'react';
 import './brokersDetailsStyle.scss';
 import etorostatic from '../../../assets/imgs/brokers/etorostatic.png';
+import eightcap from '../../../assets/imgs/brokers/eightcap-review.png';
+import tradestation from '../../../assets/imgs/brokers/tradestation-review.png';
+import Capital from '../../../assets/imgs/brokers/Capital.png';
+import Swissquote from '../../../assets/imgs/brokers/Swissquote.jpg';
 import award from '../../../assets/imgs/award_badge.webp';
 import { RatingTemplate } from '../BrokersScreen';
 import { Button } from 'primereact/button';
 import YouTube from 'react-youtube';
+import {data} from './brokerDetails.json';
+import { useParams } from 'react-router-dom';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { toast } from 'react-toastify';
 
 const BrokerDetailsScreen = () => {
 
+    const {id} = useParams()
+    const {
+        title,
+        date,
+        score,
+        bestBroker,
+        name,
+        sub1,
+        sub2,
+        sub3,
+        hint1,
+        hint2,
+        description1,
+        description2,
+        description3,
+        description4,
+        description5,
+        disclaimer,
+        disclaimer2,
+        disclaimer3,
+        recommended,
+        recommended2,
+        prosAndCons1,
+        prosAndCons2,
+        link,
+        videoId,
+    } = data[Number(id)];
     const opts = {
         height: '490',
         width: '100%',
         playerVars: {
-          // https://developers.google.com/youtube/player_parameters
           autoplay: 1,
         },
       };
 
-     const  _onReady = (event:any) => {
-        // access to player in all event handlers via event.target
+    const  _onReady = (event:any) => {
         event.target.pauseVideo();
-      }
+    }
+
+    const ProsAndCons = () => {
+        const { pros, cons } = data[Number(id)];
+        const list = cons.length > pros.length ? structuredClone(cons) : structuredClone(pros);
+        
+        return (
+            <>
+               <table className="bc_procon_table">
+                        <tbody>
+                        <tr>
+                            <th className="pro_header">Pros</th>
+                            <th className="con_header">Cons</th>
+                        </tr>
+                            {list.map((item:string , index:number) => 
+                                <tr>
+                                    <td className="pro_cell">
+                                        <span className="pro_bullet">•</span> {pros[index]}
+                                    </td>
+                                    <td className="con_cell">
+                                        <span className="con_bullet">•</span> {cons[index]}
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                
+            </>
+        )
+    }
+
+    const BrokerImage = () => {
+        let imgSrc;
+        switch (Number(id)) {
+            case 0:
+                imgSrc = etorostatic;
+                break;
+            case 1:
+                imgSrc = tradestation;
+                break;
+            case 2:
+                imgSrc = eightcap;
+                break;
+            case 3:
+                imgSrc = Swissquote;
+                break;
+            case 4:
+                imgSrc = Capital;
+                break;
+        
+            default:
+                break;
+        }
+        return (
+            <>
+               <img src={imgSrc} alt="?" />
+            </>
+        )
+    };
+
+
+    const soon = () => {
+        toast.info('Its Demo')
+    }
+
     return (
         <>
         <div className="container ml-0">
@@ -29,30 +126,32 @@ const BrokerDetailsScreen = () => {
                 <div className="head">
                     <div className='d-flex flex-row'>
                         <div className="child">
-                            <img src={etorostatic} alt="?" />
+                           <BrokerImage />
                         </div>
                         <div className="child">
                             <span className="f-25 fw-b">
-                                Interactive Brokers Review 2022
+                                {title}
                             </span>
-                            <span><i className={PrimeIcons.CALENDAR}></i> jul 2022</span>
+                            <span><i className={PrimeIcons.CALENDAR}></i> {date}</span>
                         </div>
                     </div>
                     <div className="d-flex flex-row">
                         <div className="child score">
-                            <RatingTemplate percent={96} score={4.9} />
+                            <RatingTemplate percent={score * 20} score={score} />
                         </div>
                         <div className="child">
-                            <div className="controller">
-                                <img src={award} className="mr-2 " />
-                                <span>Best discount broker</span>
-                            </div>
+                            {bestBroker && 
+                                <div className="controller">
+                                    <img src={award} className="mr-2 " />
+                                    <span>Best discount broker</span>
+                                </div>
+                            }
                         </div>
                         <div className="child flex-row">
                             <div className="btn-controller">
                                 <Button label="Sing Up" onClick={()=> {
                                     let x = document.createElement("a");
-                                    x.href = `https://www.etoro.com/accounts/sign-up`;
+                                    x.href = link;
                                     x.target = "_blank"
                                     x.click();
                                 }}  />
@@ -61,83 +160,127 @@ const BrokerDetailsScreen = () => {
                     </div>
                 </div>
                 <div className="review-controller">
-                    <h3 className='fw-b mb-3'>eToro review summary</h3>
+                    <h3 className='fw-b mb-3'>{name} review summary</h3>
                     <div className="bc_custom_html">
-                        <p className='mx-0'><a rel="nofollow" >eToro</a> is a well-known Israeli fintech company and a <a href="https://brokerchooser.com/how-to-invest/social-trading" target="_blank">social trading</a> broker, established in 2007.</p>
-                    <blockquote>
-                    <p className='mx-0'>Check out our <a href="https://brokerchooser.com/broker-reviews/etoro-review/etoro-review-for-beginners" target="_blank">eToro review tailored to the needs of beginner investors and traders</a>.</p>
-                    </blockquote>
-
-                    <p className='mx-0'>eToro serves UK clients through a unit regulated by the Financial Conduct Authority (FCA) and Australians through an Australian Securities and Investment Commission (ASIC)-regulated entity. All other customers are served by a Cypriot unit that is regulated by the Cyprus Securities and Exchange Commission (CySEC).</p>
-
-                    <p className='mx-0'>eToro is not listed on any stock exchange, does not disclose its annual report on its website and does not have a bank parent.</p>
-
-                    <p className='mx-0'>Being regulated by the top-tier FCA and ASIC is a good sign for eToro's safety.</p>
-
-                    <p className='mx-0'><strong>HEADS UP: Minimum deposit based on residency and account activation </strong>– Be sure to check the minimum deposit that is required to activate your account. After uploading your documents, a deposit is also needed in order to make trades. The amount of the deposit required&nbsp;is based on your residency, and ranges&nbsp;from $10 to $10,000. More details are available in the review’s&nbsp;<a href="https://brokerchooser.com/broker-reviews/etoro-review#review-part-account-opening" target="_blank">Account opening</a> section.</p>
-
-                    <p className='mx-0'><span className="bc-broker-data-field" data-broker-id="14" data-param-id="277"><strong>Disclaimer:</strong> CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. <strong>78% of retail investor accounts lose money when trading CFDs with this provider.</strong> You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. </span></p>
+                    <p className='mx-0'><a rel="nofollow" >{name}</a> {sub1}<a target="_blank">{sub2}</a> {sub3}</p>
+                    {hint1 && 
+                        <blockquote>
+                         <p className='mx-0'>{hint1} <a  target="_blank">{hint2}</a>.</p>
+                        </blockquote>}
+                   
+                        
+                    {description1 && <p className='mx-0'>{description1}.</p>} 
+                    {description2 && <p className='mx-0'>{description2}.</p>}
+                    {description3 && <p className='mx-0'>{description3}.</p>}
+                    {description4 && <p className='mx-0'><strong>{description4} </strong>{description5}<a href="https://brokerchooser.com/broker-reviews/etoro-review#review-part-account-opening" target="_blank">Account opening</a> section.</p>}
+                    {disclaimer && <p className='mx-0'><span className="bc-broker-data-field" data-broker-id="14" data-param-id="277"><strong>Disclaimer:</strong> {disclaimer} <strong>{disclaimer2}</strong> {disclaimer3} </span></p>}
+                    
                     </div>
                 </div>
             
                 <div className="review-controller">
                     <div className="controller">
                         <p>
-                            <strong>Recommended for</strong> traders interested in social trading (i.e. copying other
-                            investors’ trades) and zero commission stock trading
+                            <strong>Recommended for</strong> {recommended}
                         </p>
                         <div className="text-center mt-2  mr-0  w-full ">
                         <Button label='Sing up'  onClick={()=> {
                                 let x = document.createElement("a");
-                                x.href = `https://www.etoro.com/accounts/sign-up`;
+                                x.href = link;
                                 x.target = "_blank"
                                 x.click();
                             }} />
                             <br/>
-                            <span className="bc-cta-cfd-warning "><strong>78% of retail CFD accounts lose
-                                    money</strong></span>
+                            <span className="bc-cta-cfd-warning "><strong>{recommended2}</strong></span>
                         </div>
                     </div>
                 </div>
                 
                 <div className="review-controller">
-                    <h3 className='fw-b mb-3'>eToro pros and cons</h3>
-                    <p>eToro offers commission-free stock trading, and the account opening process is fast and seamless. It has innovative features like social trading, which lets you copy the strategies of other traders.</p>
-                    <p>On the negative side, eToro's non-trading fees are high as there are fees for withdrawal and inactivity. Withdrawals can be slow and USD is the only currency you can hold your cash in. Lastly, it's difficult to contact customer support.</p>
-                    <table className="bc_procon_table">
-                        <tbody>
-                            <tr>
-                                <th className="pro_header">Pros</th>
-                                <th className="con_header">Cons</th>
-                            </tr>
-                            <tr>
-                                <td className="pro_cell">
-                                    <span className="pro_bullet">•</span> Free stock and ETF trading
-                                </td>
-                                <td className="con_cell">
-                                    <span className="con_bullet">•</span> High non-trading fees
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="pro_cell">
-                                    <span className="pro_bullet">•</span> Seamless account opening
-                                </td>
-                                <td className="con_cell">
-                                    <span className="con_bullet">•</span> Only one account base currency
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="pro_cell">
-                                    <span className="pro_bullet">•</span> Social trading
-                                </td>
-                                <td className="con_cell">
-                                    <span className="con_bullet">•</span> Customer support should be improved
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <YouTube videoId="_lCGxOpKtQU" opts={opts} onReady={_onReady} />
+                    <h3 className='fw-b mb-3'>{name} pros and cons</h3>
+                    <p>{prosAndCons1}</p>
+                    <p>{prosAndCons2}</p>
+                    <ProsAndCons />
+                    <YouTube videoId={videoId} opts={opts} onReady={_onReady} />
+                </div>
 
+                <div className="review-controller">
+                    <div className="comment-controller-main">
+                        <div className="app container py-4">
+                            <div className="rounded-3 shadow-sm p-3">
+                                <h4 className="mb-4">3 Comments</h4>
+                                    <div className="py-3">
+                                    <div className="d-flex comment">
+                                        <img className="rounded-circle comment-img"
+                                            src="https://via.placeholder.com/128/fe669e/ffcbde.png?text=S" />
+                                        <div className="flex-grow-1 ms-3">
+                                            <div className="mb-1"><a  className="fw-bold  me-1">Studio KonKon</a> <span className="text-muted text-nowrap">2 days ago</span></div>
+                                            <div className="mb-2">Lorem ipsum dolor sit amet, ut qui commodo sensibus, id utinam inermis constituto vim. In nam dolorum interesset, per fierent ponderum ea. Eos aperiri feugiat democritum ne.</div>
+                                            <div className="hstack align-items-center mb-2">
+                                                <a className="green me-2" ><i onClick={soon} className="cp pi pi-thumbs-up"></i></a>
+                                                <span className="me-3 small">55</span>
+                                                <a className="link-secondary me-4" ><i onClick={soon} className="cp pi pi-thumbs-down"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <div className="py-3">
+                                    <div className="d-flex comment">
+                                        <img className="rounded-circle comment-img"
+                                            src="https://via.placeholder.com/128/99ccff/0073e6.png?text=A" />
+                                        <div className="flex-grow-1 ms-3">
+                                            <div className="mb-1"><a  className="fw-bold  pe-1">Asai Kazuma</a> <span className="text-muted text-nowrap">8 hours ago</span></div>
+                                            <div className="mb-2">Ei saepe abhorreant temporibus cum, hinc praesent voluptatum ea has.<br /><br />Vis nihil tacimates senserit ut, quo posse labores honestatis te. Ex duo nullam posidonium deterruisset, altera aeterno duo.</div>
+                                            <div className="hstack align-items-center">
+                                                <a className="link-secondary me-2" ><i onClick={soon} className="cp pi pi-thumbs-up"></i></a>
+                                                <span className="me-3 small">26</span>
+                                                <a className="link-secondary me-4" ><i onClick={soon} className="cp pi pi-thumbs-down"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <div className="py-3">
+                                    <div className="d-flex comment">
+                                        <img className="rounded-circle comment-img"
+                                            src="https://via.placeholder.com/128/cc99ff/7f00ff.png?text=K" />
+                                        <div className="flex-grow-1 ms-3">
+                                            <div className="mb-1"><a  className="fw-bold  py-1 px-2 rounded-pill me-1">Kamisato Mugi</a> <span className="text-muted text-nowrap">10 hours ago</span></div>
+                                            <div className="mb-2">Aenean non tellus sed erat ultrices rutrum. Sed ac dolor tempus, efficitur diam vitae, sagittis nisi. Morbi bibendum congue nisl eu congue. Mauris eu eros bibendum, pretium ex ac, aliquam lorem.</div>
+                                            <div className="hstack align-items-center mb-2">
+                                                <a className="green me-2" ><i  onClick={soon} className="cp pi pi-thumbs-up"></i></a>
+                                                <span className="me-3 small">8</span>
+                                                <a className="link-secondary me-4" ><i  onClick={soon} className="cp pi pi-thumbs-down"></i></a>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="comment-controller rounded-3 shadow-sm p-3 ">
+                                <div className="d-flex">
+                                    <img className="rounded-circle me-3"
+                                        style={{width:'3rem',height:'3rem'}}
+                                        src="https://via.placeholder.com/128/fe669e/ffcbde.png?text=S" />
+                                    <div className="flex-grow-1">
+                                    <div className=" gap-2 mb-1">
+                                        <a  className="fw-bold ">My Username</a>
+                                    </div>
+                                    <div className="form-floating mb-3">
+                                        <InputTextarea className=" w-100"
+                                                    placeholder='Type your comment ... '
+                                                    id="my-comment" rows={5} cols={30}
+                                                    style={{height:'7rem'}}></InputTextarea>
+                                    </div>
+                                    <div className="hstack justify-content-end gap-2">
+                                        <Button onClick={soon} label='comment' className="p-button-raised comment-btn"></Button>
+                                    </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -146,3 +289,4 @@ const BrokerDetailsScreen = () => {
 };
 
 export default React.memo(BrokerDetailsScreen);
+

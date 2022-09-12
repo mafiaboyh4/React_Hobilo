@@ -2,6 +2,9 @@
 $border :.15rem solid var(--gray);
 $radius: 10px;
 
+$comment-img-size: 3rem;
+$comment-img-size-sm: 1.75rem;
+
 @mixin Flex ($direction ) {
     display: flex;
     flex-direction: $direction;
@@ -27,7 +30,6 @@ $radius: 10px;
     height: 40px;
     padding-top: 1rem;
 }
-
 
 .broker-review-main-controller {
     @include Flex(column);
@@ -92,6 +94,50 @@ $radius: 10px;
         margin: 1rem 0 0;
         border-radius: $radius;
 
+        .comment-controller-main {
+            font-size: .875rem;
+            textarea {
+                background: var(--bg) !important;
+                border-color: var(--dark-border) !important;
+                color: var(--text);
+                border-radius: 5px !important;
+            }
+            .comment-controller {
+                color: var(--text);
+            }
+
+            .comment-btn {
+                background: #3a3e59;
+                border-color: #3a3e59;
+            }
+            .comment {
+                &-img {
+                   width: $comment-img-size;
+                   height: $comment-img-size;
+                }
+                   
+                &-replies &-img {
+                   width: $comment-img-size-sm;
+                   height: $comment-img-size-sm;
+                }
+             }
+             
+             .form-control {
+                background-color: rgba(#ffffff, .05);
+             }
+             
+             
+             /* ----- testing ----- */
+             .app-menu {
+                .btn {
+                   width: 2.5rem;
+                   height: 2.5rem;
+                   padding: 0;
+                   font-size: 1.5rem;
+                }
+             }
+            
+        }
         table.bc_procon_table {
             border-collapse: separate;
             border-spacing: 0;
@@ -99,8 +145,11 @@ $radius: 10px;
             margin-top: 20px;
             table-layout: fixed;
             width: 100%;
-            max-width: 576px;
+            max-width: 670px;
             border-bottom: $border;
+        }
+        .con_bullet {
+            color: var(--red);
         }
         table.bc_procon_table tr:first-child .pro_header {
             border-bottom: $border;

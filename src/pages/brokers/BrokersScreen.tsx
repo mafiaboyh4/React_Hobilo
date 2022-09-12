@@ -1,6 +1,4 @@
-import { Column } from 'primereact/column';
-import { DataTable } from 'primereact/datatable';
-import React, { useRef } from 'react';
+import React from 'react';
 import {data} from './brokersData.json';
 import './brokersStyle.scss';
 import etorostatic from '../../assets/imgs/brokers/etorostatic.png';
@@ -11,6 +9,7 @@ import Swissquote from '../../assets/imgs/brokers/Swissquote.jpg';
 import award from '../../assets/imgs/award_badge.webp';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
+
 export const RatingTemplate = ({percent , score}:{percent:number , score:number}) => {
     return (
         <>
@@ -42,11 +41,11 @@ const BrokersScreen = () => {
                 link = 'https://www.etoro.com'
                 break;
             case 2:
-                imgSrc = eightcap;
+                imgSrc = tradestation;
                 link = 'https://www.tradestation.com/'
                 break;
-            case 3:
-                imgSrc = tradestation;
+                case 3:
+                imgSrc = eightcap;
                 link = 'https://www.eightcap.com/en/'
                 break;
             case 4:
@@ -91,17 +90,20 @@ const BrokersScreen = () => {
                         <>
                             <div className="col-md-6 col-lg-4 mb-4 px-lg-4">
                                 <div className="box">
+                                    {index == 0 && 
                                     <div className="controller center">
                                         <img src={award} className="mr-2 " />
                                         <span>Best discount broker</span>
                                     </div>
+                                }
+                                    
                                     <div className="pt-4"></div>
                                     <BrokerNameTemplate {...item} />
                                     <div className="controller center pt-3">
                                         <RatingTemplate score={item.score} percent={(item.score * 20)} />
                                     </div>
                                     <div className="controller center py-3 px-3">
-                                        <p className='text-center f-14 '>Recommended for traders looking for broad market access and a professional trading environment minimum Deposit {item.minimumDeposit}</p>
+                                        <p className='text-center f-14 '>Recommended for traders looking for broad market access and a professional trading environment minimum Deposit {item.minimumDeposit} $</p>
                                     </div>
                                     <div className="btn-controller ">
                                         <Button label="Sing Up" onClick={()=> {

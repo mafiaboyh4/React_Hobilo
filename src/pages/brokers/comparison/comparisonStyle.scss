@@ -66,6 +66,15 @@
         @include DefaultPanel();
         max-width: 756px;
         width: 100%;
+        position: relative;
+        .vs-icon-controller {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            left: 0;
+            width: 100%;
+            top: 6rem;
+        }
         .p-accordion .p-accordion-tab:first-child .p-accordion-header .p-accordion-header-link , .p-accordion .p-accordion-content , .p-accordion .p-accordion-tab:not(:first-child) .p-accordion-header .p-accordion-header-link {
             background: transparent !important;
             border: none;

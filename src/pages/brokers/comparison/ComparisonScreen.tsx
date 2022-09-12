@@ -3,12 +3,15 @@ import './comparisonStyle.scss';
 import { Dropdown } from 'primereact/dropdown';
 import { data } from "./brokersList.json";
 import etorostatic from '../../../assets/imgs/brokers/etorostatic.png';
+import eightcap from '../../../assets/imgs/brokers/eightcap-review.png';
 import tradestation from '../../../assets/imgs/brokers/tradestation-review.png';
+import Capital from '../../../assets/imgs/brokers/Capital.png';
+import Swissquote from '../../../assets/imgs/brokers/Swissquote.jpg';
 import award from '../../../assets/imgs/award_badge.webp';
 import { Button } from 'primereact/button';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import { RatingTemplate } from './../BrokersScreen';
-                                <img src={award} className="mr-2 " />
+import vsIcon from '../../../assets/imgs/vs_icon.webp';
 
 
 const ComparisonScreen = () => {
@@ -18,6 +21,35 @@ const ComparisonScreen = () => {
     const [selectedFirst, setSelectedFirst] = useState<BrokerDetails>(firstList[0]);
     const [selectedSecond, setSelectedSecond] = useState<BrokerDetails>(secondList[1])
     const [activeIndex, setActiveIndex] = useState([0,1,2]);
+
+    const BrokerImage = ({name} : {name:string}) => {
+        let imgSrc;
+        switch (name) {
+            case 'eToro':
+                imgSrc = etorostatic;
+                break;
+            case 'TradeStation':
+                imgSrc = tradestation;
+                break;
+            case 'Eightcap':
+                imgSrc = eightcap;
+                break;
+            case 'Swissquote':
+                imgSrc = Swissquote;
+                break;
+            case 'Capital.com':
+                imgSrc = Capital;
+                break;
+        
+            default:
+                break;
+        }
+        return (
+            <>
+               <img src={imgSrc} alt="?" />
+            </>
+        )
+    }
 
     const BasicDataTemplate = ({data}:{data:BrokerDetails }) => {
 
@@ -80,20 +112,20 @@ const ComparisonScreen = () => {
         return (
             <>
                 <div className="pt-3"></div>
-                <img src={data.name == 'eToro' ? etorostatic : tradestation} alt="" />
+                <BrokerImage  name={data.name} />
                 <span className='mt-3 f-16 fw-b'>{data.name}</span>
                 <Button label='Sing up' className='sing-up mt-2' />
             </>
         )
     }
 
-    const FeeTemplate = ({data , title}:{data:BrokerDetails , title:string}) => {
+    const FeeTemplate = ({data , title}:{data:number , title:string}) => {
         return (
             <>
                 <div className="d-flex flex-column w-100 center">
                     <span className='pr-5 mb-1'> {title}</span>
                     <div className="d-flex flex-row align-items-center">
-                        <RatingTemplate percent={(data.feeScore * 20)} score={data.feeScore} />
+                        <RatingTemplate percent={(data * 20)} score={data} /> 
                     </div>
                 </div>
             </>
@@ -112,6 +144,9 @@ const ComparisonScreen = () => {
                 </div>
                 <div className="box">
                         <div className="row">
+                            <div className="vs-icon-controller">
+                                <img src={vsIcon}/>
+                            </div>
                             <div className="col-6">
                                 <div className="child">
                                     <Dropdown value={selectedFirst} options={secondList} onChange={(e) => setSelectedFirst(e.value)} optionLabel="name"  />
@@ -139,13 +174,9 @@ const ComparisonScreen = () => {
                             <div className="col-12">
                             <br />
 
-                                <p >
-                                    eToro's service is slightly better than Revolut's and a comparison of their fees shows that eToro's fees are slightly lower than Revolut's.
-
-                                    Account opening takes about the same effort at eToro compared to Revolut, deposit and withdrawal processes are about the same quality at eToro, while customer service quality is similar to Revolut's.
-
-                                    Our experts rated the trading platform of eToro as somewhat better than the platform of Revolut, found that clients have access to more markets and products with eToro, while Revolut provides somewhat lower-quality research and education.
-                                </p>
+                                <p > {selectedFirst.fromDescription ? selectedFirst.fromDescription : selectedSecond.fromDescription} </p>
+                                <p > {selectedFirst.fromDescription2 ? selectedFirst.fromDescription2 : selectedSecond.fromDescription2} </p>
+                                <p > {selectedFirst.fromDescription3 ? selectedFirst.fromDescription3 : selectedSecond.fromDescription3} </p>
 
                                 <br />
                                 
@@ -167,20 +198,20 @@ const ComparisonScreen = () => {
                                 <AccordionTab header="Fees">
                                     <div className="row">
                                         <div className="col-6">
-                                            <FeeTemplate  title='Fees score' data={selectedFirst} />
+                                            <FeeTemplate  title='Fees score' data={selectedFirst.feeScore} />
                                         </div>
                                         <div className="col-6">
-                                            <FeeTemplate title='Fees score' data={selectedSecond} />
+                                            <FeeTemplate title='Fees score' data={selectedSecond.feeScore} />
                                         </div>
                                     </div>
                                 </AccordionTab>
                                 <AccordionTab header="Deposit and withdrawal">
                                     <div className="row">
                                         <div className="col-6">
-                                            <FeeTemplate title='Deposit and withdrawal score' data={selectedFirst} />
+                                            <FeeTemplate title='Deposit and withdrawal score' data={selectedFirst.depositAndWithdrawal} />
                                         </div>
                                         <div className="col-6">
-                                            <FeeTemplate title='Deposit and withdrawal score' data={selectedSecond} />
+                                            <FeeTemplate title='Deposit and withdrawal score' data={selectedSecond.depositAndWithdrawal} />
                                         </div>
                                     </div>
                                 </AccordionTab>
@@ -204,11 +235,14 @@ interface BrokerDetails {
 	ukStock: string;
 	germanStock: string;
 	depositAndWithdrawal: number;
-	description2: string;
+	bastBroker: boolean;
 	basicData: string;
+	description2: string;
 	description: string;
-    bastBroker: boolean;
 	link: string;
 	name: string;
 	score: number;
+	fromDescription: string;
+	fromDescription2: string;
+	fromDescription3: string;
 }
