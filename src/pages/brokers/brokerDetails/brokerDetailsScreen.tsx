@@ -1,5 +1,5 @@
 import { PrimeIcons } from 'primereact/api';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './brokersDetailsStyle.scss';
 import etorostatic from '../../../assets/imgs/brokers/etorostatic.png';
 import eightcap from '../../../assets/imgs/brokers/eightcap-review.png';
@@ -12,8 +12,9 @@ import { Button } from 'primereact/button';
 import YouTube from 'react-youtube';
 import {data} from './brokerDetails.json';
 import { useParams } from 'react-router-dom';
-import { CommentsComponent } from '../../../components/global/comments/commentsComponent';
+import  CommentsComponent  from '../../../components/global/comments/commentsComponent';
 import NewsListComponent from '../../../components/global/news/newsListComponent';
+import Tour from 'reactour'
 
 const BrokerDetailsScreen = () => {
 
@@ -51,7 +52,7 @@ const BrokerDetailsScreen = () => {
           autoplay: 1,
         },
       };
-
+    const [openTour, setOpenTour] = useState(false);
     const  _onReady = (event:any) => {
         event.target.pauseVideo();
     }
@@ -114,6 +115,20 @@ const BrokerDetailsScreen = () => {
         )
     };
 
+    const tourConfig = [
+        {
+          selector: '[data-tut="reactour__singup"]',
+          content: `For Sing Up , you get +1000 Koala Point`
+        },
+    ]
+
+    useEffect(() => {
+      const isFirstTime = localStorage.getItem('FirstDetails');
+      if (!isFirstTime ||isFirstTime == 'true') {
+        setOpenTour(true);
+      } 
+    }, [])
+    
     return (
         <>
         <div className="container ml-0">
@@ -144,7 +159,7 @@ const BrokerDetailsScreen = () => {
                         </div>
                         <div className="child flex-row">
                             <div className="btn-controller">
-                                <Button label="Sing Up" onClick={()=> {
+                                <Button data-tut="reactour__singup" label="Sing Up" onClick={()=> {
                                     let x = document.createElement("a");
                                     x.href = link;
                                     x.target = "_blank"
@@ -179,7 +194,7 @@ const BrokerDetailsScreen = () => {
                             <strong>Recommended for</strong> {recommended}
                         </p>
                         <div className="text-center mt-2  mr-0  w-full ">
-                        <Button label='Sing up'  onClick={()=> {
+                        <Button label='Sing up' className='py-2'  onClick={()=> {
                                 let x = document.createElement("a");
                                 x.href = link;
                                 x.target = "_blank"
@@ -208,6 +223,13 @@ const BrokerDetailsScreen = () => {
                 </div>
             </div>
         </div>
+        <Tour
+            steps={tourConfig}
+            isOpen={openTour}
+            onRequestClose={()=> {
+            setOpenTour(false)
+            localStorage.setItem('FirstDetails' , 'false');
+        }} />
         </>
     )
 };

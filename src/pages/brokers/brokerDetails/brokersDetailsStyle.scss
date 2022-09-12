@@ -35,7 +35,7 @@ $comment-img-size-sm: 1.75rem;
     @include Flex(column);
     color: var(--text);
     max-width: 992px;
-    
+    position: relative;
     .head {
         @include Wrap();
         background: var(--surface-card);

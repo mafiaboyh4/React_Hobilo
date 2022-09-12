@@ -97,15 +97,15 @@
   }
   
   ::-webkit-input-placeholder { /* Edge */
-    color: var(--placeholder-color) !important;
+    color: var(--primary-color) !important;
   }
   
   :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: var(--placeholder-color) !important;
+    color: var(--primary-color) !important;
   }
   
   ::placeholder {
-    color: var(--placeholder-color) !important;
+    color: var(--primary-color) !important;
   }
   
   ::-webkit-scrollbar {
@@ -730,4 +730,16 @@ input {
     border-bottom-color: var(--bg) ;
     border-top-color: var(--bg) ;
   }
+}
+
+
+.reactour__helper {
+  background: var(--surface-card) !important;
+  color: var(--text) !important;
+  padding-top: 3rem !important;
+}
+
+.kVEayH , .fKLrJo {
+  background: var(--primary-color) !important;
+  color: var(--text ) !important;
 }

@@ -7,6 +7,7 @@ import Profile from './assets/imgs/users/user4.jpg'
 import { Button } from 'primereact/button';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { Tag } from 'primereact/tag';
+import KoalaPoint from './components/global/koalaPoint';
 
 const AppTopbar = (props:any) => {
     const navigate = useNavigate();
@@ -60,6 +61,7 @@ const AppTopbar = (props:any) => {
             <OpTemplate />
           </OverlayPanel>
              <div className='d-flex flex-row align-items-center'>
+
                 <button onClick={()=> {
                     navigate('/profile')
                 }}
@@ -82,6 +84,9 @@ const AppTopbar = (props:any) => {
                 </button>
             </div>
             <ul className={classNames("layout-topbar-menu  origin-top", )}>
+                <li className='d-flex align-items-center'>
+                 <KoalaPoint label='' point={200} />
+                </li>
                 <li>
                     <button className="p-link layout-topbar-button" 
                         onClick={()=> {

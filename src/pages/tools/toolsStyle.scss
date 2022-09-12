@@ -1,0 +1,55 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+
+
+.main-table-points-controller {
+    .p-datatable {
+        width: 100%;
+    }
+     .p-datatable .p-datatable-tbody > tr > td {
+        color: var(--text) !important;
+        background: var(--surface-card) !important;
+        border-color: var(--dark-border) !important;
+
+      }
+
+      .p-datatable .p-datatable-thead > tr > th {
+        border-color: var(--dark-border) !important;
+        background: var(--surface-card) !important;
+        color: var(--text);
+      }
+
+      @include Flex(column);
+      width: 100%;
+      .head {
+        @include Flex(column);
+        margin: auto;
+        max-width: 400px;
+        align-items: center;
+        .subtitle {
+          font-size: 1.2rem;
+          color: var(--gray);
+          padding-bottom: 1rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+          font-weight: 600;
+          padding-bottom: 1rem;
+          border-bottom: .15rem solid var(--primary-color)
+        }
+      }
+
+
+      .box {
+        @include DefaultPanel();
+      }
+}

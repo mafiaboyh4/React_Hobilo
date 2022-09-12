@@ -1,5 +1,9 @@
 import React from 'react';
-import './newsStyle.scss'
+import './newsStyle.scss';
+import newsPic1 from '../../../assets/imgs/news/1.jpg';
+import newsPic2 from '../../../assets/imgs/news/2.jpg';
+import newsPic3 from '../../../assets/imgs/news/3.jpg';
+
 const NewsListComponent = () => {
     return (
         <>
@@ -9,7 +13,7 @@ const NewsListComponent = () => {
                 <span className="f-18 gray" style={{position:'relative' , bottom:'.5rem'}}>News about Ethereum, Crypto</span>
             </div>
             <figure className="snip1216">
-                <div className="image"><img src="https://www.coindesk.com/resizer/oq3FoRwX7GOHs1N88UfesIvFdzM=/1056x792/filters:quality(80):format(jpg)/cloudfront-us-east-1.images.arcpublishing.com/coindesk/67BKFPCPW5DRBK4EBH5RDUB5XE.jpg"
+                <div className="image"><img src={newsPic1}
                         alt="sample69" /></div>
                 <figcaption>
                     <div className="d-flex flex-row align-items-center mb-2">
@@ -30,7 +34,7 @@ const NewsListComponent = () => {
                 </footer><a href="#"></a>
             </figure>
             <figure className="snip1216">
-                <div className="image"><img src="https://www.coindesk.com/resizer/yNOb_PWexNQgBLQg1M2Gf1J1mdE=/624x468/filters:quality(80):format(jpg)/cloudfront-us-east-1.images.arcpublishing.com/coindesk/MIYPROTEZBHXXIFA3BME7JT6TI.jpg"
+                <div className="image"><img src={newsPic2}
                         alt="sample68" /></div>
                 <figcaption>
                 <div className="d-flex flex-row align-items-center mb-2">
@@ -52,7 +56,7 @@ const NewsListComponent = () => {
             </figure>
             <figure className="snip1216">
                 <div className="image">
-                    <img src="https://www.aljazeera.com/wp-content/uploads/2021/11/ether.jpg?resize=770%2C513"
+                    <img src={newsPic3}
                         alt="sample58" /></div>
                 <figcaption>
                     <div className="d-flex flex-row align-items-center mb-2">

@@ -32,6 +32,8 @@ import BrokersScreen from './pages/brokers/BrokersScreen';
 import ProfileScreen from './pages/profile/ProfileScreen';
 import BrokerDetailsScreen from './pages/brokers/brokerDetails/brokerDetailsScreen';
 import ComparisonScreen from './pages/brokers/comparison/ComparisonScreen';
+import Calculator from './pages/tools/calculator';
+import TablePoint from './pages/tools/tablePoint';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -137,6 +139,10 @@ const App = () => {
                     { label: 'List', icon: 'pi pi-fw pi-list', to: '/brokers' },
                     { label: 'Comparison', icon: 'pi pi-fw pi-arrows-h', to: '/comparison' },
                 ]},
+                {label: 'Tools', icon: 'pi pi-fw pi-sliders-v' , items: [
+                    { label: 'calculate Koala Point', icon: 'pi pi-fw pi-percentage', to: '/calculateKP' },
+                    { label: 'Table Points', icon: 'pi pi-fw pi-table', to: '/tablePoints' },
+                ]},
             ]
         },
     ];
@@ -195,6 +201,8 @@ const App = () => {
                             <Route path='/profile' element={<ProfileScreen/>} />
                             <Route path='/brokerDetails/:id' element={<BrokerDetailsScreen />} />
                             <Route path='/comparison' element={<ComparisonScreen />} />
+                            <Route path='/calculateKP' element={<Calculator />} />
+                            <Route path='/tablePoints' element={<TablePoint />} />
                         </Routes>
                     </Suspense>
 

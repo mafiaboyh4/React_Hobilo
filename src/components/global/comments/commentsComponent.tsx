@@ -2,8 +2,9 @@ import React from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { toast } from 'react-toastify';
 import { Button } from 'primereact/button';
+import KoalaPoint from '../koalaPoint';
 
-export const CommentsComponent = () => {
+const CommentsComponent = () => {
 
     const soon = () => {
         toast.info('Its Demo')
@@ -65,7 +66,7 @@ export const CommentsComponent = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="comment-controller rounded-3 shadow-sm p-3 ">
+                        <div className="comment-controller rounded-3 shadow-sm p-3 " data-tut="reactour__goTo">
                                 <div className="d-flex">
                                     <img className="rounded-circle me-3"
                                         style={{width:'3rem',height:'3rem'}}
@@ -80,8 +81,9 @@ export const CommentsComponent = () => {
                                                     id="my-comment" rows={5} cols={30}
                                                     style={{height:'7rem'}}></InputTextarea>
                                     </div>
-                                    <div className="hstack justify-content-end gap-2">
-                                        <Button onClick={soon} label='comment' className="p-button-raised comment-btn"></Button>
+                                    <div className="hstack justify-content-end align-items-end gap-2">
+                                        <KoalaPoint label='first Comment' point={200} />
+                                        <Button  onClick={soon} label='comment' className="p-button-raised comment-btn"></Button>
                                     </div>
                                     </div>
                                 </div>
@@ -90,3 +92,5 @@ export const CommentsComponent = () => {
         </>
     )
 };
+
+export default React.memo(CommentsComponent);

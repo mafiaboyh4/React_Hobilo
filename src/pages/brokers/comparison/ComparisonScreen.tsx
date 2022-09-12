@@ -108,13 +108,40 @@ const ComparisonScreen = () => {
     }
 
     const DetailsTemplate1 = ({data}:{data:BrokerDetails }) => {
-
+        let link = '';
+        switch (data.name) {
+            case 'eToro':
+                link = 'https://www.etoro.com'
+                break;
+            case 'TradeStation':
+                link = 'https://www.tradestation.com/'
+                break;
+                case 'Eightcap':
+                link = 'https://www.eightcap.com/en/'
+                break;
+            case 'Swissquote':
+                link = 'https://en.swissquote.com/'
+                break;
+            case 'Capital.com':
+                link = 'https://capital.com/'
+                break;
+            default:
+                break;
+        }
         return (
             <>
                 <div className="pt-3"></div>
                 <BrokerImage  name={data.name} />
                 <span className='mt-3 f-16 fw-b'>{data.name}</span>
-                <Button label='Sing up' className='sing-up mt-2' />
+
+                    <Button label='Sing up' className='sing-up mt-2' onClick={()=> {
+                        let x = document.createElement("a");
+                        x.href = link;
+                        x.target = "_blank"
+                        x.click();
+                    }}  />
+
+                    <span className='mt-3 gray fw-b'>+ 1000 Koala Point</span>
             </>
         )
     }
@@ -137,9 +164,9 @@ const ComparisonScreen = () => {
         <div className="container ">
             <div className="main-comparison-controller">
                 <div className="head">
-                    <h2>eToro vs TradeStation compared</h2>
+                    <h2>{selectedFirst.name} vs {selectedSecond.name} compared</h2>
                     <span className="subtitle">
-                        Online brokers compared for fees, trading platforms, safety and more. See how eToro stacks up against Revolut!
+                        Online brokers compared for fees, trading platforms, safety and more.
                     </span>
                 </div>
                 <div className="box">
