@@ -12,6 +12,14 @@ const TablePoint = () => {
         {label:'Deposit To Any Joined Broker' , value:10},
     ]
 
+    const Currency = (value:number) => {
+        return Intl.NumberFormat().format((value));
+    }
+
+    const PointTemplate = (data:TableModel) => {
+        return <span>{Currency(data.value)} <span className="f-14">Point</span></span>
+    }
+
     return (
         <>
         <div className="container">
@@ -26,7 +34,7 @@ const TablePoint = () => {
                     <div className="py-3"></div>
                     <DataTable showGridlines  value={list} responsiveLayout="stack" breakpoint="960px">
                             <Column field="label" header="Description" ></Column>
-                            <Column field="value" header="Koala Point" ></Column>
+                            <Column field="value" header="Koala Point" body={PointTemplate} ></Column>
                     </DataTable>
                 </div>
             </div>
@@ -36,3 +44,8 @@ const TablePoint = () => {
 };
 
 export default React.memo(TablePoint);
+
+interface TableModel {
+    label:string;
+    value:number;
+}

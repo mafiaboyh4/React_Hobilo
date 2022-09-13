@@ -126,7 +126,17 @@
             flex: 4;
         }
     }
-
+.banner-controller {
+    @include Flex(column);
+    align-items: flex-end;
+    img {
+        max-height: 344px;
+        @media (min-width:1550px) {
+            object-fit: contain !important;
+            object-position: right;
+        }
+    }
+}
     .quiz-answer {
         @include DefaultPanel();
         max-width: 400px;

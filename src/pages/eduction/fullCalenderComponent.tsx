@@ -1,24 +1,96 @@
-import React from 'react'
+import React, { FC, useState } from 'react'
+import { Calendar, dateFnsLocalizer, Event } from 'react-big-calendar'
+import withDragAndDrop, { withDragAndDropProps } from 'react-big-calendar/lib/addons/dragAndDrop'
+import format from 'date-fns/format'
+import parse from 'date-fns/parse'
+import startOfWeek from 'date-fns/startOfWeek'
+import getDay from 'date-fns/getDay'
+import enUS from 'date-fns/locale/en-US'
+import addHours from 'date-fns/addHours'
+import startOfHour from 'date-fns/startOfHour'
 
-import event1 from '../../assets/imgs/event1.jpg';
-import event2 from '../../assets/imgs/event2.jpg';
-import event3 from '../../assets/imgs/event3.jpg';
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
 
 const FullCalenderComponent = () => {
-    return <>
-     <h3>This Week Events</h3>
-     <div className="row">
-        <div className="col-12 mb-2">
-            <img className='cp' width={'100%'} height={'400px'} style={{objectFit:'cover'}} src={event1}/>
-        </div>
-        <div className="col-lg-6 mt-2">
-            <img className='cp' width={'100%'} src={event2}/>
-        </div>
-        <div className="col-lg-6 mt-2">
-            <img className='cp' width={'100%'} src={event3}/>
-        </div>
-     </div>
+    const addDay = (date:Date, days:number) =>  {
 
-    </>
-};
+        var result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+
+    const [events, setEvents] = useState<Event[]>([
+        {
+          title: 'Best Trader Review',
+          start,
+          end,
+        },
+        {
+          title: 'fibonacci trade',
+          start:addDay(start, 4),
+          end:addDay(end, 4),
+        },
+        {
+          title: 'best indicator for forex',
+          start,
+          end,
+        },
+      ])
+    
+      const onEventResize: withDragAndDropProps['onEventResize'] = data => {
+        const { start, end } = data
+    
+        setEvents(currentEvents => {
+          const firstEvent = {
+            start: new Date(start),
+            end: new Date(end),
+          }
+          return [...currentEvents, firstEvent]
+        })
+      }
+    
+      const onEventDrop: withDragAndDropProps['onEventDrop'] = data => {
+        console.log(data)
+      }
+    
+      return (
+        <>
+        <div className="d-flex flex-column justify-content-between h-100">
+            <div>
+            <h3>Event Table</h3>
+            <span className="f-16 gray" style={{position:'relative' , bottom:'.8rem'}}>Our events calendar</span>
+            </div>
+            <div className="box">
+                <Calendar
+                defaultView='month'
+                views={["month","week", "day"]}
+                events={events}
+                localizer={localizer}
+                timeslots={1}
+                style={{ height: '600px', width: '100%' }}
+                />
+            </div>
+        </div>
+        </>
+      )
+    }
+    
+    const locales = {
+      'en-US': enUS,
+    }
+    const endOfHour = (date: Date): Date => addHours(startOfHour(date), 1)
+    const now = new Date()
+    const start = endOfHour(now)
+    const end = addHours(start, 2)
+    // The types here are `object`. Strongly consider making them better as removing `locales` caused a fatal error
+    const localizer = dateFnsLocalizer({
+      format,
+      parse,
+      startOfWeek,
+      getDay,
+      locales,
+    })
+    //@ts-ignore
+    const DnDCalendar = withDragAndDrop(Calendar)
 export default React.memo(FullCalenderComponent)

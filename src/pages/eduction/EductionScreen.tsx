@@ -52,7 +52,7 @@ const EductionScreen = () => {
                                 </div>
                                 <div className="child">
                                     <span>Koala Eduction</span>
-                                    <span className="f-14 gray">Learn and Make Mony</span>
+                                    <span className="f-14 gray">Learn and Make Money</span>
                                 </div>
                             </div>
                             <div className="event-controller">
@@ -79,7 +79,8 @@ const EductionScreen = () => {
                                             <div className="description">
                                             <span className='mt-1 f-14 gray'>{item.description}</span>
                                             <div className="pints">
-                                                    <span className='ml-2'>+300 Points</span>
+                                                    <span className='ml-2'>+300 </span>
+                                                    <span className='ml-2'> Points</span>
                                                 </div>
                                             </div>
                                         </div>

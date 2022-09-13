@@ -18,6 +18,7 @@
     "classnames": "^2.2.6",
     "count-down-react": "^1.0.12",
     "craco-plugin-scoped-css": "^1.1.1",
+    "date-fns": "^2.29.2",
     "final-form": "^4.20.7",
     "formik": "^2.2.9",
     "moment": "^2.29.3",
@@ -27,6 +28,7 @@
     "prismjs": "1.9.0",
     "react": "^18.0.0",
     "react-apexcharts": "^1.4.0",
+    "react-big-calendar": "^1.5.0",
     "react-dom": "^18.0.0",
     "react-qr-code": "^2.0.7",
     "react-router-dom": "^6.3.0",
@@ -38,6 +40,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
+    "@types/react-big-calendar": "^0.38.1",
     "@types/react-dom": "^18.0.0",
     "@types/reactour": "^1.18.2",
     "@vitejs/plugin-react": "^1.3.0",

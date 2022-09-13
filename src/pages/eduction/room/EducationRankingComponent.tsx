@@ -49,7 +49,7 @@ const EducationRanking = ({isMax = false} : {isMax:boolean }) => {
 
     return (
         <>
-            <div className="ranking-table-controller">
+            <div className="ranking-table-controller" style={isMax ? {maxHeight:'unset'}: {}} >
                 <span className="header-title">Top Traders</span>
                 <div className="top-traders">
                     <div className="trader ">

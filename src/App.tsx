@@ -140,7 +140,7 @@ const App = () => {
                     { label: 'Comparison', icon: 'pi pi-fw pi-arrows-h', to: '/comparison' },
                 ]},
                 {label: 'Tools', icon: 'pi pi-fw pi-sliders-v' , items: [
-                    { label: 'calculate Koala Point', icon: 'pi pi-fw pi-percentage', to: '/calculateKP' },
+                    // { label: 'Calculate Koala Point', icon: 'pi pi-fw pi-percentage', to: '/calculateKP' },
                     { label: 'Table Points', icon: 'pi pi-fw pi-table', to: '/tablePoints' },
                 ]},
             ]

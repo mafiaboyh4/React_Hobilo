@@ -6,7 +6,74 @@
 
 .eduction-controller {
     @include Flex(column);
-    
+    .box {
+        background: var(--surface-overlay);
+        padding: 1rem;
+        color: var(--text);
+        .rbc-toolbar button {
+            color: var(--text);
+            border-width: .15rem;
+            margin-bottom: .8rem;
+            &:hover {
+                color: var(--text) !important;
+            }
+        }
+
+        .rbc-event, .rbc-day-slot .rbc-background-event {
+            background: #735bf3 !important;
+            border-color: #735bf3 !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        .rbc-show-more {
+            background: transparent !important;
+            color: var(--text);
+            margin-top: .5rem;
+        }
+
+        .rbc-toolbar button {
+            &:hover {
+                background: transparent !important;
+                border-color: #fff !important;
+            }
+            &:focus {
+                background: #735bf3 !important;
+                color: #fff !important;
+            }
+           
+        }
+       
+        .rbc-today {
+            background: #735bf314 !important;
+            color: var(--text ) !important;
+        }
+        .rbc-events-container {
+            display: grid;
+            grid-template-rows: repeat(24, 40px);
+          }
+          
+          .rbc-day-slot .rbc-event {
+            position: static;
+          }
+          
+          .rbc-day-slot .rbc-event--global {
+            background-color: #fbab18;
+          }
+          
+          .rbc-day-slot .rbc-event--regional {
+            background-color: #6ebe4a;
+          }
+          
+        .rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
+            background: #735bf3;
+            color: #fff !important;
+        }
+
+        .rbc-off-range-bg {
+            background:#735bf314;
+            color: var(--gray) !important;
+        }
+    }
     .today-events {
         @include Flex(column);
         justify-content: space-between;

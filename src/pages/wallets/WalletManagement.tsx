@@ -9,12 +9,17 @@ import { OverlayPanel } from 'primereact/overlaypanel';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import QRCode from "react-qr-code";
+import { Currency } from './../../components/contract/globalService';
 
 const WalletManagementScreen = () => {
     const op = useRef<OverlayPanel>(null);
     const [fromSelected, setFromSelected] = useState('USDT');
     const [toSelected, setToSelected] = useState('Koala');
     const coinsPanelFrom = useRef<OverlayPanel>(null);
+    const [fromValue, setFromValue] = useState<number>(0);
+    const [toValue, setToValue] = useState<number>(0);
+    const [calculateValue, setCalculateValue] = useState(0)
+
     const coins = [
         {symbol: 'USDT' , name:'Tether' , price:'0.998' , balance:'300' , class1:'tether-1' , class2:'tether-2'},
         {symbol: 'BTC' , name:'Bitcoin' , price:'20.132.0' , balance:'0' , class1:'' , class2:'secondary'},
@@ -66,6 +71,33 @@ const WalletManagementScreen = () => {
         }
         return <span className={classN}>{name}</span>
     }
+
+    const Calculate = (isFrom:boolean)  => {
+
+        let selected = '' ;
+        const symbol = isFrom ? toSelected : fromSelected
+
+        const price = coins.find((item) => item.symbol == symbol)?.price
+        console.log('price' , price);
+        const value = isFrom ? fromValue : toValue;
+        const result = Number(price) * (value > 0 ? value : 1)
+        console.log('res' , result);
+        if (fromSelected == 'Koala') {
+            setToValue(Number(price) * fromValue)
+        } else {
+            setFromValue(Number(price) * toValue)
+        };
+        setCalculateValue(result ? result : 0);
+    }
+
+    useEffect(() => {
+        Calculate(true);
+    }, [fromSelected]);
+
+    useEffect(() => {
+        Calculate(false);
+    }, [toSelected])
+    
 
     return (
         <>
@@ -159,7 +191,7 @@ const WalletManagementScreen = () => {
                                                 </div>
                                             </Button>
                                              <div className="input-controller">
-                                                <InputNumber min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
+                                                <InputNumber onInput={()=> Calculate(true)} value={fromValue} onValueChange={(e) => setFromValue(Number(e.value))} min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
                                              </div>
                                         </div>
                                     </div>
@@ -198,12 +230,12 @@ const WalletManagementScreen = () => {
                                                 </div>
                                             </Button>
                                              <div className="input-controller">
-                                                <InputNumber min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
+                                                <InputNumber onInput={()=> Calculate(false)} value={toValue} onValueChange={(e) => setToValue(Number(e.value))} min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
                                              </div>
                                         </div>
                                     </div>
                                     <div className="controller px-0 justify-content-start">
-                                        <span  className="f-14 gary">Reference Price: <span className="text">1 Koala Coin = 1 USDT</span>  </span>
+                                        <span  className="f-14 gary">Reference Price: <span className="text">{fromSelected == 'Koala' ? Currency(fromValue): Currency(toValue)} Koala Coin = {calculateValue}</span>  </span>
                                     </div>
                                 </div>
                                 <div className="swap-button">

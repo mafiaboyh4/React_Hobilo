@@ -109,12 +109,14 @@ const EductionRoomScreen = () => {
                     <div className="col-lg-3 px-1">
                       <EductionQuiz />
                     </div>    
-                    <div className="col-lg-3 px-1">
+                    <div className="col-lg-3 col-xl-4 px-2">
                       <EducationRankingComponent isMax={false} />
                     </div>
-                    <div className="col-lg-6 px-1">
-                        <img className='cp mt-1' style={{maxHeight:'300px',objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={event2}/>
-                        <img className='cp mt-2' style={{maxHeight:'308px',objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={event3}/>
+                    <div className="col-lg-6 col-xl-5 px-1">
+                        <div className="banner-controller">
+                            <img className='cp mt-1' style={{objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={event2}/>
+                            <img className='cp mt-2' style={{objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={event3}/>
+                        </div>
                     </div>
                 </div> 
             </div> 

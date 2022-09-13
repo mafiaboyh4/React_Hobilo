@@ -83,7 +83,7 @@ const CompetitionScreen = () => {
                    
                     <div className="col-lg-6">
                         <CompetitionChartComponent />
-                        <img className='cp mt-3' width={'100%'} height={'400px'} style={{objectFit:'cover'}} src={event1}/>
+                        <img className='cp mt-3' width={'100%'} height={'400px'} style={{objectFit:'cover' , objectPosition:'left'}} src={event1}/>
 
                     </div>
                     <div className="col-lg-6 px-1">
