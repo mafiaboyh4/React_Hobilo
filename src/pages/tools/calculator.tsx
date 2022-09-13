@@ -1,24 +1,56 @@
-import React from 'react';
+import { PrimeIcons } from 'primereact/api';
+import { Button } from 'primereact/button';
+import { InputNumber } from 'primereact/inputnumber';
+import { OverlayPanel } from 'primereact/overlaypanel';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import koalaIcon from '../../assets/imgs/koalaIcon.png';
 import './toolsStyle.scss'
+import { Currency } from './../../components/contract/globalService';
+
 const Calculator = () => {
-    // const coins = [
-    //     {symbol: 'USDT' , name:'Tether' , price:'0.998' , balance:'300' , class1:'tether-1' , class2:'tether-2'},
-    //     {symbol: 'BTC' , name:'Bitcoin' , price:'20.132.0' , balance:'0' , class1:'' , class2:'secondary'},
-    //     {symbol: 'ETH' , name:'Ethereum' , price:'1.565.45' , balance:'0' , class1:'eth-1' , class2:'eth-2'},
-    // ];
+    const op = useRef<OverlayPanel>(null);
+    const [fromSelected, setFromSelected] = useState('Koala');
+    const [toSelected, setToSelected] = useState('USDT');
+    const coinsPanelFrom = useRef<OverlayPanel>(null);
+    const [fromValue, setFromValue] = useState<number>(0);
+    const [toValue, setToValue] = useState<number>(0);
 
-    // const switchCoin = () => {
-    //     const data = {
-    //         from: fromSelected,
-    //         to: toSelected
-    //     }
+    const coins = [
+        {symbol: 'USDT' , name:'Tether' , price:'0.998' , balance:'300' , class1:'tether-1' , class2:'tether-2'},
+        {symbol: 'BTC' , name:'Bitcoin' , price:'20132' , balance:'0' , class1:'' , class2:'secondary'},
+        {symbol: 'ETH' , name:'Ethereum' , price:'1565' , balance:'0' , class1:'eth-1' , class2:'eth-2'},
+    ];
 
-    //     setFromSelected(data.to);
-    //     setToSelected(data.from);
-    // }
+   const [calcValue, setCalcValue] = useState(0);
+    const Calculate = (isFrom:boolean)  => {
+
+        const symbol = isFrom ? toSelected : fromSelected
+        const price = coins.find((item) => item.symbol == symbol)?.price ?? 1
+        const value = isFrom ? fromValue : toValue;
+        const result = Number(price) * (value > 0 ? value : 1)
+        console.log('res' , result);
+        if (isFrom) {
+            const cal = Number(price) / fromValue;
+            setToValue(cal)
+        } else {
+            const cal = Number(price) / ((toValue && toValue > 0)  ? toValue : 1)
+            setFromValue( cal)
+        };
+        setCalcValue(result ? result : 1);
+    }
+
+    useEffect(() => {
+        Calculate(true)
+    }, [fromSelected]);
+
+    useEffect(() => {
+        Calculate(false)
+    }, [toSelected]);
+
+    
     return (
         <>
-        {/* <div className="container">
+        <div className="container">
             <div className="main-table-points-controller">
               <div className="col-12 mb-5">
                     <div className="head">
@@ -28,15 +60,13 @@ const Calculator = () => {
                         </span>
                     </div>
                     <div className="py-3"></div>
-                    <div className="box">
+
+                    <div className="box mx-auto">
                     <div className="swap-controller">
                             <div className="swap-panel">
                                 <div className="swap-form from">
                                     <div className="controller">
                                         <span className="gary f-13">From</span>
-                                         <Button className="p-button-text p-0" >
-                                            <span  className="f-13 p-color">Max</span>
-                                         </Button>
                                     </div>
                                     <div className="controller">
                                     <OverlayPanel ref={coinsPanelFrom} dismissable style={{minWidth:'350px'}}>
@@ -71,23 +101,17 @@ const Calculator = () => {
                                                 </div>
                                             </Button>
                                              <div className="input-controller">
-                                                <InputNumber min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
+                                                <InputNumber onInput={()=> Calculate(true)} min={0} value={fromValue} onChange={(e)=> {
+                                                     setFromValue(Number(e.value));
+                                                     Calculate(true);
+                                                }}   minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
                                              </div>
                                         </div>
                                     </div>
-                                    <div  className="controller px-0 justify-content-end">
-                                        <span className="f-14 gary">Available : 
-                                            <span className="p-color f-14"> 0 </span> {fromSelected} 
-                                            <span
-                                             onClick={(e) => op.current?.toggle(e)}
-                                             aria-haspopup
-                                             aria-controls="overlay_panel"
-                                            className="p-color f-14 cp ml-2" >Deposit</span>
-                                        </span>
-                                    </div>
                                 </div>
-                                <div className="middle">
-                                    <Button onClick={switchCoin} icon={PrimeIcons.SORT_ALT}  className='p-color ' />
+                                <div className="middle my-3">
+                                    
+                                    <span className='fw-b'>| |</span>
                                 </div>
                                 <div className="swap-form to">
                                     <div className="controller">
@@ -110,23 +134,23 @@ const Calculator = () => {
                                                 </div>
                                             </Button>
                                              <div className="input-controller">
-                                                <InputNumber min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
+                                                <InputNumber onInput={()=> Calculate(false)} value={toValue} onChange={(e)=> {
+                                                    setToValue(Number(e.value))
+                                                    Calculate(false);
+                                                }}  min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
                                              </div>
                                         </div>
                                     </div>
                                     <div className="controller px-0 justify-content-start">
-                                        <span  className="f-14 gary">Reference Price: <span className="text">1 Koala Coin = 1 USDT</span>  </span>
+                                        <span  className="f-14 gary">Reference Price: <span className="text">{Currency((fromValue).toFixed(5))} Koala Coin = {(Currency((toValue).toFixed(5)))} {toSelected}</span>  </span>
                                     </div>
-                                </div>
-                                <div className="swap-button">
-                                    <Button label="swap" onClick={onSubmit} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> */}
+        </div>
         </>
     )
 };

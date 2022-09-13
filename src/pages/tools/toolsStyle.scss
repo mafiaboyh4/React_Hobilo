@@ -51,5 +51,146 @@
 
       .box {
         @include DefaultPanel();
+        max-width: 476px;
+        width: 100%;
+        .swap-controller .swap-panel .p-inputtext {
+          height: 100%;
+          font-size: 1.3rem;
+          padding-top: .9rem;
+      }
+        .swap-controller {
+          width: 100%;
+          padding: 1rem 0;
+          display: flex;
+          justify-content: flex-start;
+         
+          .swap-panel {
+              width: 100%;
+              min-width: 370px;
+              background: var(--surface-card);
+              padding: 1rem;
+              border-radius: 8px;
+              .p-inputtext {
+                  background: var(--bg) !important;
+                  border: none;
+                  box-shadow: none !important;
+                  color: var(--text);
+              }
+              @media (min-width:576px) {
+                  padding: 1.5rem;
+              }
+  
+              .middle {
+                  display: flex;
+                  justify-content: center;
+                  padding: .8rem .5rem ;
+                  button {
+                      border: none !important;
+                      box-shadow: none !important;
+                      background: transparent;
+                      max-width: 55px;
+                      height: 55px;
+                      display: flex;
+                      justify-content: center;
+                      border-radius: 50%;
+                      min-width: auto !important;
+                      width: 100%;
+                      img {
+                          width: 100%;
+                      }
+                      
+                  }
+              }
+              
+              .swap-button {
+                  padding-top: 1.5rem ;
+                  width: 100%;
+                  button {
+                      background: #7d50b9;
+                      border: none;
+                      width: 100%;
+                      border-radius: 5px;
+                  }
+              }
+              .swap-form {
+                  display: flex;
+                  flex-direction: column;
+                  border-radius: 8px;
+                  overflow: hidden;
+                  .controller {
+                      display: flex;
+                      flex-direction: row;
+                      width: 100%;
+                      align-items: center;
+                      justify-content: space-between;
+                      padding: .8rem 1rem 0;
+                   
+                      .text {
+                          color: var(--text);
+                      }
+                      &:first-child button {
+                          min-width: fit-content;
+                          border-radius: 8px 8px 0 0;
+  
+                      }
+  
+                      &:nth-child(1) , &:nth-child(2) {
+                          background: var(--bg);
+                      }
+                      &:nth-child(2) {
+                          padding-top: 0;
+                          border-radius:0 0 8px 8px;
+                      }
+                      .choose-box { 
+                          display: flex;
+                          flex-direction: row;
+                          align-content: center;
+                          width: 100%;
+                          .selected-coin {
+                              display: flex;
+                              width: 100%;
+                              flex-direction: row;
+                              justify-content: space-between;
+                              align-items: center;
+                              padding: .5rem 0;
+                              transition: .6s;
+                              cursor: pointer;
+                              border-radius: 5px;
+                              color: var(--text);
+  
+                              
+                              &:hover {
+                                  background: var(--scenery);
+                              } 
+                              img {
+                                  width: 23px;
+                                  height: 23px;
+                                  border-radius: 50%;
+                              }
+  
+                              .center {
+                                  display: flex;
+                                  align-items: center;
+                              }
+                              .line {
+                                  height: 24px;
+                                  width: 1px;
+                                  background: var(--gary);
+                                  margin: 0 0.5rem;
+                                  display: block;
+                              }
+                          }
+  
+                          .input-controller {
+                              width: fit-content;
+                              max-width: 88%;
+                              overflow: hidden;
+                              padding: 0 .5rem;
+                          }
+                      }
+                  }
+              }
+          }
+      }
       }
 }

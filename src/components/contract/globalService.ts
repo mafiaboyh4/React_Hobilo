@@ -1,3 +1,3 @@
-export const Currency = (value:number) => {
-    return Intl.NumberFormat().format((value));
+export const Currency = (value:number | string) => {
+    return Intl.NumberFormat().format((Number(value)));
 }
