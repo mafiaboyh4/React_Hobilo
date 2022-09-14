@@ -72,30 +72,30 @@ const WalletManagementScreen = () => {
         return <span className={classN}>{name}</span>
     }
 
-    const Calculate = (isFrom:boolean)  => {
-
-        let selected = '' ;
-        const symbol = isFrom ? toSelected : fromSelected
-
-        const price = coins.find((item) => item.symbol == symbol)?.price
-        console.log('price' , price);
+    const Calculate = (isFrom:boolean , sourceValue:number)  => {
+        const symbol = isFrom ? toSelected : fromSelected;
+        const price = coins.find((item) => item.symbol == symbol)?.price ?? 1
         const value = isFrom ? fromValue : toValue;
         const result = Number(price) * (value > 0 ? value : 1)
         console.log('res' , result);
-        if (fromSelected == 'Koala') {
-            setToValue(Number(price) * fromValue)
+        if (isFrom) {
+            setFromValue(sourceValue);
+            const cal = sourceValue / Number(price)  ;
+            setToValue(cal)
         } else {
-            setFromValue(Number(price) * toValue)
+            setToValue(sourceValue);
+            const cal = sourceValue * Number(price) 
+            setFromValue(cal)
         };
-        setCalculateValue(result ? result : 0);
+        setCalculateValue(result ? result : 1);
     }
 
     useEffect(() => {
-        Calculate(true);
+        Calculate(true , 0);
     }, [fromSelected]);
 
     useEffect(() => {
-        Calculate(false);
+        Calculate(false , 0);
     }, [toSelected])
     
 
@@ -191,7 +191,7 @@ const WalletManagementScreen = () => {
                                                 </div>
                                             </Button>
                                              <div className="input-controller">
-                                                <InputNumber onInput={()=> Calculate(true)} value={fromValue} onValueChange={(e) => setFromValue(Number(e.value))} min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
+                                                <InputNumber value={fromValue} onValueChange={(e) => Calculate(true , Number(e.value))} min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
                                              </div>
                                         </div>
                                     </div>
@@ -230,7 +230,7 @@ const WalletManagementScreen = () => {
                                                 </div>
                                             </Button>
                                              <div className="input-controller">
-                                                <InputNumber onInput={()=> Calculate(false)} value={toValue} onValueChange={(e) => setToValue(Number(e.value))} min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
+                                                <InputNumber value={toValue} onValueChange={(e) => Calculate(false , Number(e.value))} min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
                                              </div>
                                         </div>
                                     </div>

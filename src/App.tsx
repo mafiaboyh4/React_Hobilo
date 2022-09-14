@@ -34,6 +34,7 @@ import BrokerDetailsScreen from './pages/brokers/brokerDetails/brokerDetailsScre
 import ComparisonScreen from './pages/brokers/comparison/ComparisonScreen';
 import Calculator from './pages/tools/calculator';
 import TablePoint from './pages/tools/tablePoint';
+import { ExchangeIntroScreen } from './pages/brokers/exchangeIntro/exchangeIntroScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -138,6 +139,8 @@ const App = () => {
                 {label: 'Brokers', icon: 'pi pi-fw pi-briefcase' , items: [
                     { label: 'List', icon: 'pi pi-fw pi-list', to: '/brokers' },
                     { label: 'Comparison', icon: 'pi pi-fw pi-arrows-h', to: '/comparison' },
+                    { label: 'Exchange', icon: 'pi pi-fw pi-sync', to: '/exchangeIntro' },
+
                 ]},
                 {label: 'Tools', icon: 'pi pi-fw pi-sliders-v' , items: [
                     { label: 'Calculate Koala Point', icon: 'pi pi-fw pi-percentage', to: '/calculateKP' },
@@ -203,6 +206,8 @@ const App = () => {
                             <Route path='/comparison' element={<ComparisonScreen />} />
                             <Route path='/calculateKP' element={<Calculator />} />
                             <Route path='/tablePoints' element={<TablePoint />} />
+                            <Route path='/exchangeIntro' element={<ExchangeIntroScreen />} />
+
                         </Routes>
                     </Suspense>
 

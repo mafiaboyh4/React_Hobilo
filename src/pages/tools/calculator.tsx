@@ -21,30 +21,30 @@ const Calculator = () => {
         {symbol: 'ETH' , name:'Ethereum' , price:'1565' , balance:'0' , class1:'eth-1' , class2:'eth-2'},
     ];
 
-   const [calcValue, setCalcValue] = useState(0);
-    const Calculate = (isFrom:boolean)  => {
-
-        const symbol = isFrom ? toSelected : fromSelected
-        const price = coins.find((item) => item.symbol == symbol)?.price ?? 1
+    const [calcValue, setCalcValue] = useState(0);
+    const Calculate = (isFrom:boolean , sourceValue:number)  => {
+        const price = coins.find((item) => item.symbol == toSelected)?.price ?? 1
         const value = isFrom ? fromValue : toValue;
         const result = Number(price) * (value > 0 ? value : 1)
         console.log('res' , result);
         if (isFrom) {
-            const cal = Number(price) / fromValue;
+            setFromValue(sourceValue);
+            const cal = sourceValue / Number(price)  ;
             setToValue(cal)
         } else {
-            const cal = Number(price) / ((toValue && toValue > 0)  ? toValue : 1)
-            setFromValue( cal)
+            setToValue(sourceValue);
+            const cal = sourceValue * Number(price) 
+            setFromValue(cal)
         };
         setCalcValue(result ? result : 1);
     }
 
     useEffect(() => {
-        Calculate(true)
+        Calculate(true , 0)
     }, [fromSelected]);
 
     useEffect(() => {
-        Calculate(false)
+        Calculate(false , 0)
     }, [toSelected]);
 
     
@@ -101,9 +101,8 @@ const Calculator = () => {
                                                 </div>
                                             </Button>
                                              <div className="input-controller">
-                                                <InputNumber onInput={()=> Calculate(true)} min={0} value={fromValue} onChange={(e)=> {
-                                                     setFromValue(Number(e.value));
-                                                     Calculate(true);
+                                                <InputNumber min={0} value={fromValue} onChange={(e)=> {
+                                                    Calculate(true , Number(e.value));
                                                 }}   minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
                                              </div>
                                         </div>
@@ -134,9 +133,8 @@ const Calculator = () => {
                                                 </div>
                                             </Button>
                                              <div className="input-controller">
-                                                <InputNumber onInput={()=> Calculate(false)} value={toValue} onChange={(e)=> {
-                                                    setToValue(Number(e.value))
-                                                    Calculate(false);
+                                                <InputNumber value={toValue} onChange={(e)=> {
+                                                    Calculate(false , Number(e.value));
                                                 }}  min={0}  minFractionDigits={1} maxFractionDigits={8}  placeholder="0.0" />
                                              </div>
                                         </div>
