@@ -1,9 +1,0 @@
-{
-    "data":[
-        {"index":1, "link":"https://www.etoro.com/accounts/sign-up","name":"eToro" , "score":4.8 , "minimumDeposit":50 , "freeScore":4.4},
-        {"index":2, "link":"https://getstarted2.tradestation.com/registration","name":"TradeStation" , "score":4.5 , "minimumDeposit": 0 , "freeScore":4},
-        {"index":3, "link":"https://portal.eightcap.com/en-US/auth/create-account","name":"Eightcap" , "score":4.4 , "minimumDeposit": 100 , "freeScore":4.5},
-        {"index":4, "link":"https://trade.swissquote.ch/signup/public/form/full/trading/individual?lang=en&mktName=MKT_DEFAULT&l=e&trackPageId=obmh77ylioti9wkq3poeb55qr*7614122369&cookieId=undefined&sessionId=obmh77ylioti9wkq3poeb55qr&_ga=2.201746905.994422108.1662696527-372912613.1662696513#full/trading/individual/step2","name":"Swissquote" , "score":4.6 , "minimumDeposit": 0 , "freeScore":2.4},
-        {"index":5, "link":"https://capital.com/","name":"Capital.com" , "score":4.7 , "minimumDeposit": 20 , "freeScore":4.4}
-    ]
-}

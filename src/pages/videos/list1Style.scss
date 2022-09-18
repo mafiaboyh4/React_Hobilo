@@ -1,0 +1,23 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+
+
+.video-list-1-main-controller {
+    @include Flex(column);
+    .head-controller {
+        @include Flex(row);
+        justify-content: space-between;
+        .banner-slider-controller {
+        }
+    }
+
+}

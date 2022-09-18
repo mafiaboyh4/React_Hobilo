@@ -15,26 +15,14 @@ import './assets/styles/styles.scss'
 import "primereact/resources/themes/arya-purple/theme.css";  //theme
 import "primereact/resources/primereact.min.css";                  //core css
 import "primeicons/primeicons.css";                                //icons
-import 'prismjs/themes/prism-coy.css';
 import './assets/demo/flags/flags.css';
 import './assets/demo/Demos.scss';
 import './assets/layout/layout.scss';
 
 import { ToastContainer } from 'react-toastify';
-import RequireAuth from './base/RequireAuth';
 import { TradeTypeAppUrlEnum } from './enum/allEnums';
-import WalletManagement from './pages/wallets/WalletManagement';
 import EductionScreen from './pages/eduction/EductionScreen';
-import EductionRoomScreen from './pages/eduction/room/EductionRoomScreen';
-import CompetitionScreen from './pages/competition/CompetitionScreen';
-import CompetitionDetailsScreen from './pages/competition/competitionDetails/CompetitionDetailsScreen';
-import BrokersScreen from './pages/brokers/BrokersScreen';
-import ProfileScreen from './pages/profile/ProfileScreen';
-import BrokerDetailsScreen from './pages/brokers/brokerDetails/brokerDetailsScreen';
-import ComparisonScreen from './pages/brokers/comparison/ComparisonScreen';
-import Calculator from './pages/tools/calculator';
-import TablePoint from './pages/tools/tablePoint';
-import { ExchangeIntroScreen } from './pages/brokers/exchangeIntro/exchangeIntroScreen';
+import ListVideos1Screen from './pages/videos/list1Screen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -188,6 +176,7 @@ const App = () => {
                         <Routes>
                             <Route path="/" element={<Navigate to="/events" replace />} />
                             <Route path="/events" element={<EductionScreen />} />
+                            <Route path="/videos2" element={<ListVideos1Screen />} />
                         </Routes>
                     </Suspense>
 
