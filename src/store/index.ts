@@ -2,12 +2,14 @@ import create from 'zustand'
 
 
 interface StoreInterface {
-    isDark: boolean
-    changeTheme: (dark:boolean) => void
+    isDark: boolean;
+    changeTheme: (dark:boolean) => void;
+    searchValue: string;
 }
 
 export const Store = create<StoreInterface>((set , get) => ({
     isDark: localStorage.getItem('isDark') == 'false' ? false : true,
+    searchValue:'',
     changeTheme:(dark) => {
         const {isDark} = get();
         set({isDark:dark});

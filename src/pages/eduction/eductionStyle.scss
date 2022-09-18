@@ -20,8 +20,8 @@
         }
 
         .rbc-event, .rbc-day-slot .rbc-background-event {
-            background: #735bf3 !important;
-            border-color: #735bf3 !important;
+            background: #eb382f !important;
+            border-color: #eb382f !important;
             outline: none !important;
             box-shadow: none !important;
         }
@@ -37,14 +37,14 @@
                 border-color: #fff !important;
             }
             &:focus {
-                background: #735bf3 !important;
+                background: #eb382f !important;
                 color: #fff !important;
             }
            
         }
        
         .rbc-today {
-            background: #735bf314 !important;
+            background: #eb382f14 !important;
             color: var(--text ) !important;
         }
         .rbc-events-container {
@@ -65,12 +65,12 @@
           }
           
         .rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
-            background: #735bf3;
+            background: #eb382f;
             color: #fff !important;
         }
 
         .rbc-off-range-bg {
-            background:#735bf314;
+            background:#eb382f14;
             color: var(--gray) !important;
         }
     }

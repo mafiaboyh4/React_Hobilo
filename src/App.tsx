@@ -133,19 +133,12 @@ const App = () => {
     const menu = [
         {
             items: [
-                {label: 'Wallets', icon: 'pi pi-fw pi-wallet', to: '/wallets' ,},
-                {label: 'Eduction', icon: 'fa-sharp fa-solid fa-lines-leaning', to: '/eduction' ,},
-                {label: 'Competition', icon: 'pi pi-fw pi-chart-bar', to: '/competition' ,},
-                {label: 'Brokers', icon: 'pi pi-fw pi-briefcase' , items: [
-                    { label: 'List', icon: 'pi pi-fw pi-list', to: '/brokers' },
-                    { label: 'Comparison', icon: 'pi pi-fw pi-arrows-h', to: '/comparison' },
-                    { label: 'Exchange', icon: 'pi pi-fw pi-sync', to: '/exchangeIntro' },
-
-                ]},
-                {label: 'Tools', icon: 'pi pi-fw pi-sliders-v' , items: [
-                    { label: 'Calculate Koala Point', icon: 'pi pi-fw pi-percentage', to: '/calculateKP' },
-                    { label: 'Table Points', icon: 'pi pi-fw pi-table', to: '/tablePoints' },
-                ]},
+                {label: 'Events', icon: 'fa-sharp fa-solid fa-lines-leaning', to: '/eduction' ,},
+                {label: 'Teachers', icon: 'fa-sharp fa-solid fa-graduation-cap', to:'/teachers'},
+                {label: 'Videos', icon: 'fa-brands fa-youtube', items: [
+                    {label:'List 1' , icon: 'pi pi-list' , to:'/videos1'},
+                    {label:'List 2' , icon: 'pi pi-list' , to:'/videos2'},
+                ]}
             ]
         },
     ];
@@ -193,21 +186,8 @@ const App = () => {
                   
                     <Suspense fallback={<div>Loading...</div>}>
                         <Routes>
-                            {/* <Route path="/" element={<Login />} /> */}
-                            <Route path="/" element={<Navigate to="/wallets" replace />} />
-                            <Route path="/wallets" element={<WalletManagement />} />
-                            <Route path="/eduction" element={<EductionScreen />} />
-                            <Route path="/room/:id" element={<EductionRoomScreen />} />
-                            <Route path="/competition" element={<CompetitionScreen />} />
-                            <Route path="/competitionDetails/:id" element={<CompetitionDetailsScreen />} />
-                            <Route path="/brokers" element={<BrokersScreen />} />
-                            <Route path='/profile' element={<ProfileScreen/>} />
-                            <Route path='/brokerDetails/:id' element={<BrokerDetailsScreen />} />
-                            <Route path='/comparison' element={<ComparisonScreen />} />
-                            <Route path='/calculateKP' element={<Calculator />} />
-                            <Route path='/tablePoints' element={<TablePoint />} />
-                            <Route path='/exchangeIntro' element={<ExchangeIntroScreen />} />
-
+                            <Route path="/" element={<Navigate to="/events" replace />} />
+                            <Route path="/events" element={<EductionScreen />} />
                         </Routes>
                     </Suspense>
 

@@ -14,7 +14,7 @@ const EductionScreen = () => {
     const roomId = useRef(1);
 
     const events = [
-        {id:1,time:'10:00 - 11:00' , color:'#735bf3' , title:'Meeting With 10 Client' , description:'How To Trade Basicity' },
+        {id:1,time:'10:00 - 11:00' , color:'#eb382f' , title:'Meeting With 10 Client' , description:'How To Trade Basicity' },
         {id:2,time:'05:40 - 13:20' , color:'#51cffd' , title:'NFT and Market place' , description:'create and deploy workshop' },
         {id:3,time:'9:00 - 13:00' , color:'#fdc95f' , title:'Eth v2' , description:'what is Eth v2 and how work it is' }
     ];
