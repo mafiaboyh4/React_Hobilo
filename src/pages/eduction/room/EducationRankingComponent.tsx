@@ -5,7 +5,7 @@ import Profile0 from '../../../assets/imgs/profiles/profile0.jpg'
 import Profile1 from '../../../assets/imgs/profiles/profile1.jpg'
 import Profile2 from '../../../assets/imgs/profiles/profile2.jpg'
 import Crown from "../../../assets/imgs/queen-crown.png";
-import { ArrowDropUp , ArrowDropDown} from '@material-ui/icons';
+// import { ArrowDropUp , ArrowDropDown} from '@material-ui/icons';
 
 import user0 from '../../../assets/imgs/users/user1.jpg'
 import user1 from '../../../assets/imgs/users/user10.jpg'
@@ -54,7 +54,7 @@ const EducationRanking = ({isMax = false} : {isMax:boolean }) => {
                 <div className="top-traders">
                     <div className="trader ">
                         <span>2</span>
-                        <ArrowDropUp fontSize="large"  className='green' />
+                        {/* <ArrowDropUp fontSize="large"  className='green' /> */}
                         <div className="profile-controller">
                             <img src={Profile1} />
                         </div>
@@ -82,7 +82,7 @@ const EducationRanking = ({isMax = false} : {isMax:boolean }) => {
                     </div>
                     <div className="trader ml-2">
                          <span>3</span>
-                        <ArrowDropDown fontSize="large"  />
+                        {/* <ArrowDropDown fontSize="large"  /> */}
                         <div className="profile-controller">
                             <img src={Profile2} />
                         </div>
@@ -100,7 +100,7 @@ const EducationRanking = ({isMax = false} : {isMax:boolean }) => {
                         <div className={`item cp ${isMax && 'px-md-5'}`}>
                             <div className="rank">
                                 <span className={`${item.change > 0 ? 'green':'red'}`} >{Math.round(item.change)}</span>
-                                {item.change > 0 ? <ArrowDropUp fontSize="large" className='green' /> : <ArrowDropDown fontSize="large" className="red"  /> }
+                                {/* {item.change > 0 ? <ArrowDropUp fontSize="large" className='green' /> : <ArrowDropDown fontSize="large" className="red"  /> } */}
                                 
                             </div>
                             <div className="user-details">

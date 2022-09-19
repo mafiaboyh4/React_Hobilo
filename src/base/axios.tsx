@@ -9,6 +9,6 @@ axios.defaults.headers = {
     "token": `${token}`,
     "Access-Control-Allow-Origin": "*",
     "Cache-Control": "no-cache",
-}
+} as any
 
 export default axios;

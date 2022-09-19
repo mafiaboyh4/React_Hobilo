@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Tag } from 'primereact/tag';
-import { LiveTv , PersonRounded , FavoriteRounded , CommentRounded } from '@material-ui/icons';
+// import { LiveTv , PersonRounded , FavoriteRounded , CommentRounded } from '@material-ui/icons';
 import './roomStyle.scss'
 import Profile from '../../../assets/imgs/profile.png'
 import { PrimeIcons } from 'primereact/api';
@@ -27,7 +27,7 @@ const EductionRoomScreen = () => {
                                     <div className="side">
                                         <div className="child ">
                                             <div className="icon-controller">
-                                                <LiveTv />
+                                                {/* <LiveTv /> */}
                                                 <span className="f-14 fw-b  pt-1">Live</span>
                                             </div>
                                         </div>
@@ -45,15 +45,15 @@ const EductionRoomScreen = () => {
                                     </div>
                                     <div className="side v-center">
                                         <div className="controller v-center">
-                                            <PersonRounded className='green' />
+                                            {/* <PersonRounded className='green' /> */}
                                             <span className='ml-1'>2 k</span>
                                         </div>
                                         <div className="controller v-center">
-                                            <FavoriteRounded className='red' />
+                                            {/* <FavoriteRounded className='red' /> */}
                                             <span className='ml-1'>180</span>
                                         </div>
                                         <div className="controller v-center">
-                                            <CommentRounded className='gray' />
+                                            {/* <CommentRounded className='gray' /> */}
                                             <span className='ml-1'>32</span>
                                         </div>
 

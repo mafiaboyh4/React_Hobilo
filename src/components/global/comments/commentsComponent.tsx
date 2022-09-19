@@ -76,10 +76,10 @@ const CommentsComponent = () => {
                                         <a  className="fw-bold ">My Username</a>
                                     </div>
                                     <div className="form-floating mb-3">
-                                        <InputTextarea className=" w-100"
+                                        {/* <InputTextarea className=" w-100"
                                                     placeholder='Type your comment ... '
                                                     id="my-comment" rows={5} cols={30}
-                                                    style={{height:'7rem'}}></InputTextarea>
+                                                    style={{height:'7rem'}}></InputTextarea> */}
                                     </div>
                                     <div className="hstack justify-content-end align-items-end gap-2">
                                         <KoalaPoint label='first Comment' point={200} />
