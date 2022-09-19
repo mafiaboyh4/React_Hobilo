@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import {Ripple} from "primereact/ripple";
 import { Badge } from 'primereact/badge';
-
+import profilePic from './assets/imgs/users/user1.jpg'
 const AppSubmenu = (props:any) => {
     const location = useLocation();
 
@@ -110,8 +110,25 @@ const AppSubmenu = (props:any) => {
 export const AppMenu = (props:any) => {
 
     return (
-        <div className="layout-menu-container">
-            <AppSubmenu items={props.model} className="layout-menu"  onMenuItemClick={props.onMenuItemClick} root={true} role="menu" />
-        </div>
+        <>
+            <div className="profile-app-menu-controller">
+                <img src={profilePic} />
+                <span className='title'>Nannie Nelson</span>
+                <span className="f-13 gray">nannieNe1996@gmail.com</span>
+                <div className="text-controller">
+                    <div className="child">
+                        <span>2,000</span>
+                        <span>Koala Point</span>
+                    </div>
+                    <div className="child">
+                        <span>1,213</span>
+                        <span>Ranking</span>
+                    </div>
+                </div>
+            </div>
+            <div className="layout-menu-container">
+                <AppSubmenu items={props.model} className="layout-menu"  onMenuItemClick={props.onMenuItemClick} root={true} role="menu" />
+            </div>
+        </>
     );
 }

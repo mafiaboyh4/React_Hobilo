@@ -22,7 +22,8 @@ import './assets/layout/layout.scss';
 import { ToastContainer } from 'react-toastify';
 import { TradeTypeAppUrlEnum } from './enum/allEnums';
 import EductionScreen from './pages/eduction/EductionScreen';
-import ListVideos1Screen from './pages/videos/list1Screen';
+import ListVideos1Screen from './pages/videos/list1/list1Screen';
+import ShowVideoScreen from './pages/videos/showVideo/showVideoScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -121,7 +122,7 @@ const App = () => {
     const menu = [
         {
             items: [
-                {label: 'Events', icon: 'fa-sharp fa-solid fa-lines-leaning', to: '/eduction' ,},
+                {label: 'Events', icon: 'fa-sharp fa-solid fa-lines-leaning', to: '/events' ,},
                 {label: 'Teachers', icon: 'fa-sharp fa-solid fa-graduation-cap', to:'/teachers'},
                 {label: 'Videos', icon: 'fa-brands fa-youtube', items: [
                     {label:'List 1' , icon: 'pi pi-list' , to:'/videos1'},
@@ -177,6 +178,7 @@ const App = () => {
                             <Route path="/" element={<Navigate to="/events" replace />} />
                             <Route path="/events" element={<EductionScreen />} />
                             <Route path="/videos2" element={<ListVideos1Screen />} />
+                            <Route path="/showVideo/:id" element={<ShowVideoScreen />} />
                         </Routes>
                     </Suspense>
 

@@ -3,28 +3,28 @@ import { Swiper, SwiperSlide , useSwiper  } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css';
 import './list1Style.scss';
-import event1 from '../../assets/imgs/event4.png';
-import event2 from '../../assets/imgs/event5.jpg';
-import Teachers from '../../assets/imgs/teachers.jpg';
+import event1 from '../../../assets/imgs/event4.png';
+import event2 from '../../../assets/imgs/event5.jpg';
+import Teachers from '../../../assets/imgs/teachers.jpg';
 
 import { Button } from 'primereact/button';
 import SwiperCore, { Autoplay } from 'swiper';
-import post1 from '../../assets/imgs/youtube/1.webp';
-import post2 from '../../assets/imgs/youtube/2.webp';
-import post3 from '../../assets/imgs/youtube/3.webp';
-import post4 from '../../assets/imgs/youtube/4.webp';
-import post5 from '../../assets/imgs/youtube/5.webp';
-import post6 from '../../assets/imgs/youtube/6.webp';
-import post7 from '../../assets/imgs/youtube/7.webp';
-import post8 from '../../assets/imgs/youtube/8.webp';
-import {data} from './listVideos.json';
+import post1 from '../../../assets/imgs/youtube/1.webp';
+import post2 from '../../../assets/imgs/youtube/2.webp';
+import post3 from '../../../assets/imgs/youtube/3.webp';
+import post4 from '../../../assets/imgs/youtube/4.webp';
+import post5 from '../../../assets/imgs/youtube/5.webp';
+import post6 from '../../../assets/imgs/youtube/6.webp';
+import post7 from '../../../assets/imgs/youtube/7.webp';
+import post8 from '../../../assets/imgs/youtube/8.webp';
+import {data} from '../listVideos.json';
 import { SelectButton } from 'primereact/selectbutton';
-import { signal } from '@preact/signals-react';
+import { useNavigate } from 'react-router-dom';
 
 const ListVideos1Screen = () => {
    
     SwiperCore.use([Autoplay]);
-
+    const nav = useNavigate();
     const GetImageTemplate = ({index} : {index:number}) => {
         let image ;
         let objectPosition = 'right';
@@ -118,7 +118,7 @@ const ListVideos1Screen = () => {
                     </div>
                         {data.map((item , index)=> (
                             <div key={index+1} className="item-main-controller col-lg-4 col-xl-3 cp">
-                                <div className="banner-controller">
+                                <div className="banner-controller" onClick={()=> nav(`/showVideo/${index}`)}>
                                     <GetImageTemplate index={index + 1} />
                                 </div>
                                 <div className="details-controller">
