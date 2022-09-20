@@ -21,50 +21,49 @@ import {data} from '../listVideos.json';
 import { SelectButton } from 'primereact/selectbutton';
 import { useNavigate } from 'react-router-dom';
 
+export const GetImageVideosTemplate = ({index} : {index:number}) => {
+    let image ;
+    let objectPosition = 'right';
+    switch (index) {
+        case 1:
+            image = post1;
+            objectPosition = 'left'
+            break;
+        case 2:
+            image = post2;
+            objectPosition = 'center'
+            break;
+        case 3:
+            image = post3;
+            break;
+        case 4:
+            image = post4;
+            break;
+        case 5:
+            image = post5;
+            break;
+        case 6:
+            image = post6;
+            break;
+        case 7:
+            image = post7;
+            break;
+        case 8:
+            image = post8;
+            break;
+    }
+    return <img src={image} style={{objectPosition:objectPosition}} />
+}
 const ListVideos1Screen = () => {
    
     SwiperCore.use([Autoplay]);
     const nav = useNavigate();
-    const GetImageTemplate = ({index} : {index:number}) => {
-        let image ;
-        let objectPosition = 'right';
-        switch (index) {
-            case 1:
-                image = post1;
-                objectPosition = 'left'
-                break;
-            case 2:
-                image = post2;
-                objectPosition = 'center'
-                break;
-            case 3:
-                image = post3;
-                break;
-            case 4:
-                image = post4;
-                break;
-            case 5:
-                image = post5;
-                break;
-            case 6:
-                image = post6;
-                break;
-            case 7:
-                image = post7;
-                break;
-            case 8:
-                image = post8;
-                break;
-        }
-        return <img src={image} style={{objectPosition:objectPosition}} />
-    }
-
-    // const selectFormat = signal('left');
     const [selectFormat, setSelectFormat] = useState('Center')
     const justifyOptions = [
-        {icon: 'pi pi pi-bars', value: 'left'},
+        {icon: 'pi pi pi-table', value: 'left'},
         {icon: 'pi pi pi-th-large', value: 'Center'},
     ];
+
     const justifyTemplate = (option:ListTemplateTypeInterface) => {
         return <i className={option.icon}></i>;
     }
@@ -106,7 +105,7 @@ const ListVideos1Screen = () => {
                         <img src={Teachers} />
                         <div className="text-controller">
                             <span className='title'>Live NOW !</span>
-                            <Button label='join Now'  />
+                            <Button label='join Now' onClick={()=> nav(`/showVideo/0`)} />
                         </div>
                     </div>
                 </div>
@@ -116,14 +115,16 @@ const ListVideos1Screen = () => {
                     <div className="head ">
                         <HeadListTemplate />
                     </div>
-                        {data.map((item , index)=> (
+                    {data.map((item , index)=> (
+                         <>
+                        {selectFormat == 'Center' ? 
                             <div key={index+1} className="item-main-controller col-lg-4 col-xl-3 cp">
                                 <div className="banner-controller" onClick={()=> nav(`/showVideo/${index}`)}>
-                                    <GetImageTemplate index={index + 1} />
+                                    <GetImageVideosTemplate index={index + 1} />
                                 </div>
                                 <div className="details-controller">
-                                    <div className="child">
-                                        <GetImageTemplate index={index + 1} />
+                                    <div className="child" style={{minWidth:'fit-content'}}>
+                                        <GetImageVideosTemplate index={index + 1} />
                                     </div>
                                     <div className="child">
                                         <span className='title'>{item.label}</span>
@@ -137,6 +138,34 @@ const ListVideos1Screen = () => {
                                     </div>
                                 </div>
                             </div>
+                            :
+                            <div className="col-lg-4 col-xl-3 cp">
+                                <div className="item-main-controller-alt">
+                                    <div onClick={()=> nav(`/showVideo/${index}`)}>
+                                    <GetImageVideosTemplate index={index + 1} />
+                                    </div>
+                                    <div className="text-controller">
+                                        <div className="controller">
+                                            <div className="pl-2 pt-2">
+                                                <span className='f-14 name'>{item.owner}</span>
+                                            </div>
+                                            <div className="profile">
+                                                <GetImageVideosTemplate index={index + 1} />
+                                            </div>
+                                        </div>
+                                        <div className="p-2">
+                                            <div className="controller title">
+                                                <span className="f-18">{item.label}</span>
+                                            </div>
+                                            <div className="controller">
+                                                <span className="f-14 gray">{item.views} views - {item.date}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                            </>
                         ))}
                     </div>
                 </div>

@@ -26,6 +26,7 @@
         position: relative;
         border-radius: 5px;
         overflow: hidden;
+        color: #fff;
         img {
             height: 100%;
             object-fit: contain;
@@ -35,7 +36,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 99%;
+            height: 100%;
             @include Flex(column);
             justify-content: center;
             align-items: center;
@@ -155,6 +156,57 @@
                         }
 
                      }
+                }
+            }
+        }
+        .item-main-controller-alt {
+            background: var(--surface-card);
+            @include Flex(column);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            img {
+                width: 100%;
+            }
+            .text-controller {
+                @include Flex(column);
+                width: 100%;
+                .controller {
+                    position: relative;
+                    @include Flex(row);
+                    justify-content: space-between;
+                    &.title {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        margin-bottom: 0.3rem;
+                        span {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+
+                        }
+                    }
+                    .name {
+                        color: #888888;
+                    }
+                    .profile {
+                        width: 55px;
+                        height: 55px;
+                        border-radius: 50%;
+                        padding: .4rem;
+                        position: absolute;
+                        background: var(--surface-card);
+                        right: .5rem;
+                        bottom: .3rem;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 50%;
+
+                        }
+                    }
                 }
             }
         }
