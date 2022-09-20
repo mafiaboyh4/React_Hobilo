@@ -1,11 +1,11 @@
 import React from 'react';
-import KoalaLogo from '../../assets/imgs/koalaIcon.png';
-const KoalaPoint = ({label , point} : {label:string , point:number}) => {
+import HFMLogo from '../../assets/imgs/HFMIcon.png';
+const HFMPoint = ({label , point} : {label:string , point:number}) => {
     return (
         <>
             <div className="d-flex flex-row align-items-center">
                 <span className='mr-1' style={label ? {color:'#4caf50'}:{}}>{label && label + ' : +' } {point} </span>
-                <span className='f-13 mr-1 ' style={label ? {color:'#4caf50'}:{}}>{label ? 'KP' : 'Koala Point'}</span>
+                <span className='f-13 mr-1 ' style={label ? {color:'#4caf50'}:{}}>{label ? 'KP' : 'HFM Point'}</span>
                 {label &&
                  <img style={{
                         width:'23px' ,
@@ -15,7 +15,7 @@ const KoalaPoint = ({label , point} : {label:string , point:number}) => {
                         background:'var(--bg)' ,
                         borderRadius:'50%'
                     }}
-                    src={KoalaLogo} />
+                    src={HFMLogo} />
                 }
             </div>
         
@@ -23,4 +23,4 @@ const KoalaPoint = ({label , point} : {label:string , point:number}) => {
     )
 };
 
-export default React.memo(KoalaPoint)
+export default React.memo(HFMPoint)

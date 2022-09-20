@@ -8,7 +8,7 @@ const TablePoint = () => {
         {label:'Sing Up Exchange Or Broker' , value:1000},
         {label:'First Comment on Broker' , value:200},
         {label:'Daily activity' , value:10},
-        {label:'Deposit To Koala' , value:50},
+        {label:'Deposit To HFM' , value:50},
         {label:'Deposit To Any Joined Broker' , value:10},
     ]
 
@@ -28,13 +28,13 @@ const TablePoint = () => {
                     <div className="head">
                         <h2>Table Points</h2>
                         <span className="subtitle">
-                            All about Koala Points 
+                            All about HFM Points 
                         </span>
                     </div>
                     <div className="py-3"></div>
                     <DataTable showGridlines  value={list} responsiveLayout="stack" breakpoint="960px">
                             <Column field="label" header="Description" ></Column>
-                            <Column field="value" header="Koala Point" body={PointTemplate} ></Column>
+                            <Column field="value" header="HFM Point" body={PointTemplate} ></Column>
                     </DataTable>
                 </div>
             </div>

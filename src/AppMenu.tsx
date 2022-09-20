@@ -118,7 +118,7 @@ export const AppMenu = (props:any) => {
                 <div className="text-controller">
                     <div className="child">
                         <span>2,000</span>
-                        <span>Koala Point</span>
+                        <span>HFM Point</span>
                     </div>
                     <div className="child">
                         <span>1,213</span>

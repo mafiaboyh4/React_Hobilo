@@ -3,13 +3,13 @@ import { Button } from 'primereact/button';
 import { InputNumber } from 'primereact/inputnumber';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import koalaIcon from '../../assets/imgs/koalaIcon.png';
+import HFMIcon from '../../assets/imgs/HFMIcon.png';
 import './toolsStyle.scss'
 import { Currency } from './../../components/contract/globalService';
 
 const Calculator = () => {
     const op = useRef<OverlayPanel>(null);
-    const [fromSelected, setFromSelected] = useState('Koala');
+    const [fromSelected, setFromSelected] = useState('HFM');
     const [toSelected, setToSelected] = useState('USDT');
     const coinsPanelFrom = useRef<OverlayPanel>(null);
     const [fromValue, setFromValue] = useState<number>(0);
@@ -54,9 +54,9 @@ const Calculator = () => {
             <div className="main-table-points-controller">
               <div className="col-12 mb-5">
                     <div className="head">
-                        <h2>Koala Calculate</h2>
+                        <h2>HFM Calculate</h2>
                         <span className="subtitle">
-                         Calculate Koala Coin to Any Coin or Token
+                         Calculate HFM Coin to Any Coin or Token
                         </span>
                     </div>
                     <div className="py-3"></div>
@@ -74,7 +74,7 @@ const Calculator = () => {
                                             {coins.map((item)=> 
                                                 <div key={item.name} className="item cp" onClick={()=> {
                                                     
-                                                    if (fromSelected == 'Koala') setToSelected(item.symbol);
+                                                    if (fromSelected == 'HFM') setToSelected(item.symbol);
                                                     else setFromSelected(item.symbol);
                                                     // @ts-ignore
                                                     coinsPanelFrom.current.hide();
@@ -87,16 +87,16 @@ const Calculator = () => {
                                     </OverlayPanel>
                                         <div className="choose-box">
                                         <Button className="p-button-text p-button-plain p-0" onClick={(e) => {
-                                            if (fromSelected == 'Koala') return
+                                            if (fromSelected == 'HFM') return
                                             // @ts-ignore
                                             coinsPanelFrom.current.toggle(e)
                                         }} >
                                                 <div className="selected-coin">
                                                         <div className="d-flex align-items-center"  >
-                                                            <img src={fromSelected == 'Koala' ? koalaIcon : `https://alinance.com/statics/${fromSelected.toUpperCase()}.svg`} alt="?" style={fromSelected == 'Koala' ? {backgroundColor:'#fff'}:{}} />
+                                                            <img src={fromSelected == 'HFM' ? HFMIcon : `https://alinance.com/statics/${fromSelected.toUpperCase()}.svg`} alt="?" style={fromSelected == 'HFM' ? {backgroundColor:'#fff'}:{}} />
                                                             <span className="mx-2 center f-18 pt-1">{fromSelected}</span>
                                                         </div>
-                                                        {fromSelected !== 'Koala' && <i className="pi pi-angle-down gary"></i>}
+                                                        {fromSelected !== 'HFM' && <i className="pi pi-angle-down gary"></i>}
                                                     <div className="line"></div>
                                                 </div>
                                             </Button>
@@ -119,16 +119,16 @@ const Calculator = () => {
                                     <div className="controller">
                                         <div className="choose-box">
                                         <Button className="p-button-text p-button-plain p-0"  onClick={(e) => {
-                                            if (toSelected == 'Koala') return
+                                            if (toSelected == 'HFM') return
                                             // @ts-ignore
                                             coinsPanelFrom.current.toggle(e)
                                         }} >
                                                 <div className="selected-coin">
                                                         <div className="d-flex align-items-center"  >
-                                                            <img src={toSelected == 'Koala' ? koalaIcon : `http://185.202.113.250/icons/64x64//${toSelected.toUpperCase()}.png`} alt="?"  style={toSelected == 'Koala' ? {backgroundColor:'#fff'}:{}} />
+                                                            <img src={toSelected == 'HFM' ? HFMIcon : `http://185.202.113.250/icons/64x64//${toSelected.toUpperCase()}.png`} alt="?"  style={toSelected == 'HFM' ? {backgroundColor:'#fff'}:{}} />
                                                             <span className="mx-2 center f-18 pt-1">{toSelected}</span>
                                                         </div>
-                                                        {toSelected !== 'Koala' && <i className="pi pi-angle-down gary"></i>}
+                                                        {toSelected !== 'HFM' && <i className="pi pi-angle-down gary"></i>}
                                                     <div className="line"></div>
                                                 </div>
                                             </Button>
@@ -140,7 +140,7 @@ const Calculator = () => {
                                         </div>
                                     </div>
                                     <div className="controller px-0 justify-content-start">
-                                        <span  className="f-14 gary">Reference Price: <span className="text">{Currency((fromValue).toFixed(5))} Koala Coin = {(Currency((toValue).toFixed(5)))} {toSelected}</span>  </span>
+                                        <span  className="f-14 gary">Reference Price: <span className="text">{Currency((fromValue).toFixed(5))} HFM Coin = {(Currency((toValue).toFixed(5)))} {toSelected}</span>  </span>
                                     </div>
                                 </div>
                             </div>

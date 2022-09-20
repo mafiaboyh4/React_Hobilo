@@ -24,6 +24,7 @@ import { TradeTypeAppUrlEnum } from './enum/allEnums';
 import EductionScreen from './pages/eduction/EductionScreen';
 import ListVideos1Screen from './pages/videos/list1/list1Screen';
 import ShowVideoScreen from './pages/videos/showVideo/showVideoScreen';
+import EductionRoomScreen from './pages/eduction/room/EductionRoomScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -176,6 +177,7 @@ const App = () => {
                             <Route path="/events" element={<EductionScreen />} />
                             <Route path="/videos" element={<ListVideos1Screen />} />
                             <Route path="/showVideo/:id" element={<ShowVideoScreen />} />
+                            <Route path="/room/:id" element={<EductionRoomScreen />} />
                         </Routes>
                     </Suspense>
 

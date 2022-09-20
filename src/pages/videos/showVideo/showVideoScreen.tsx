@@ -8,8 +8,6 @@ import { GetImageVideosTemplate } from '../list1/list1Screen';
 
 const ShowVideoScreen = () => {
    
-    const [isLike, setIsLike] = useState<boolean | null>(null);
-  
     return (
         <>
             <div className="show-video-controller">

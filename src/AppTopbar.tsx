@@ -51,7 +51,7 @@ const AppTopbar = (props:any) => {
 
 
             <Link to="/dashboard" className="layout-topbar-logo ml-3 pt-1">
-                <span>Koala</span>
+                <span>HFM</span>
             </Link>
 
 

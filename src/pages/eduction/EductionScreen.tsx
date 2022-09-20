@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import './eductionStyle.scss'
-import koalaIcon from '../../assets/imgs/koalaIcon.png';
+import HFMIcon from '../../assets/imgs/HFMIcon.png';
 import { Button } from 'primereact/button';
 import FullCalenderComponent from './fullCalenderComponent';
 import { Menu } from 'primereact/menu';
@@ -48,10 +48,10 @@ const EductionScreen = () => {
                         <div>
                             <div className="head">
                                 <div className="child">
-                                    <img src={koalaIcon} />
+                                    <img src={HFMIcon} />
                                 </div>
                                 <div className="child">
-                                    <span>Koala Eduction</span>
+                                    <span>HFM Eduction</span>
                                     <span className="f-14 gray">Learn and Make Money</span>
                                 </div>
                             </div>

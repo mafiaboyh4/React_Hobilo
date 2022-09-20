@@ -45,15 +45,15 @@ const EductionRoomScreen = () => {
                                     </div>
                                     <div className="side v-center">
                                         <div className="controller v-center">
-                                            {/* <PersonRounded className='green' /> */}
+                                            <i className="fa-solid fa-user green"></i>
                                             <span className='ml-1'>2 k</span>
                                         </div>
                                         <div className="controller v-center">
-                                            {/* <FavoriteRounded className='red' /> */}
+                                            <i className="fa-solid fa-heart red"></i>
                                             <span className='ml-1'>180</span>
                                         </div>
                                         <div className="controller v-center">
-                                            {/* <CommentRounded className='gray' /> */}
+                                            <i className="fa-solid fa-comment gray"></i>
                                             <span className='ml-1'>32</span>
                                         </div>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { toast } from 'react-toastify';
 import { Button } from 'primereact/button';
-import KoalaPoint from '../koalaPoint';
+import HFMPoint from '../HFMPoint';
 
 const CommentsComponent = () => {
 
@@ -82,7 +82,7 @@ const CommentsComponent = () => {
                                                     style={{height:'7rem'}}></InputTextarea> */}
                                     </div>
                                     <div className="hstack justify-content-end align-items-end gap-2">
-                                        <KoalaPoint label='first Comment' point={200} />
+                                        <HFMPoint label='first Comment' point={200} />
                                         <Button  onClick={soon} label='comment' className="p-button-raised comment-btn"></Button>
                                     </div>
                                     </div>
