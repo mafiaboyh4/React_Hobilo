@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Tag } from 'primereact/tag';
-// import { LiveTv , PersonRounded , FavoriteRounded , CommentRounded } from '@material-ui/icons';
 import './roomStyle.scss'
 import Profile from '../../../assets/imgs/profile.png'
 import { PrimeIcons } from 'primereact/api';
@@ -8,8 +7,6 @@ import { Button } from 'primereact/button';
 import EducationChatComponent from './EducationChatComponent';
 import EductionQuiz from './EductionQuiz';
 import EducationRankingComponent from './EducationRankingComponent';
-import event2 from '../../../assets/imgs/event2.jpg';
-import event3 from '../../../assets/imgs/event3.jpg';
 
 
 const EductionRoomScreen = () => {
@@ -114,8 +111,8 @@ const EductionRoomScreen = () => {
                     </div>
                     <div className="col-lg-6 col-xl-5 px-1">
                         <div className="banner-controller">
-                            <img className='cp mt-1' style={{objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={event2}/>
-                            <img className='cp mt-2' style={{objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={event3}/>
+                            <img className='cp mt-1' style={{objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={`http://egiby.net/event2.jpg`}/>
+                            <img className='cp mt-2' style={{objectFit:'cover' , borderRadius:'8px'}} width={'100%'} src={`http://egiby.net/event3.jpg`}/>
                         </div>
                     </div>
                 </div> 

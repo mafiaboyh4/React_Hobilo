@@ -1,7 +1,0 @@
-{
-    "data":[
-        {"index":1 , "amount":32.3 , "symbol":"USDT" , "txId":"wdawdaw12412yr80fypadfahw" , "point":12},
-        {"index":2 , "amount":0.0012 , "symbol":"BTC" , "txId":"dwagaewgaxaqwr213" , "point":21}, 
-        {"index":3 , "amount":0.2 , "symbol":"ETH" , "txId":"dwagaewgaxaqwr213" , "point":10}
-    ]
-}

@@ -1,5 +1,7 @@
 import React, { FC, useState } from 'react'
+//@ts-ignore
 import { Calendar, dateFnsLocalizer, Event } from 'react-big-calendar'
+//@ts-ignore
 import withDragAndDrop, { withDragAndDropProps } from 'react-big-calendar/lib/addons/dragAndDrop'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'

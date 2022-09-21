@@ -25,6 +25,7 @@ import EductionScreen from './pages/eduction/EductionScreen';
 import ListVideos1Screen from './pages/videos/list1/list1Screen';
 import ShowVideoScreen from './pages/videos/showVideo/showVideoScreen';
 import EductionRoomScreen from './pages/eduction/room/EductionRoomScreen';
+import ProfileScreen from './pages/profile/ProfileScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -178,6 +179,7 @@ const App = () => {
                             <Route path="/videos" element={<ListVideos1Screen />} />
                             <Route path="/showVideo/:id" element={<ShowVideoScreen />} />
                             <Route path="/room/:id" element={<EductionRoomScreen />} />
+                            <Route path="/profile" element={<ProfileScreen />} />
                         </Routes>
                     </Suspense>
 

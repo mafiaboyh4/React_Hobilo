@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import {Ripple} from "primereact/ripple";
 import { Badge } from 'primereact/badge';
 import profilePic from './assets/imgs/users/user1.jpg'
+import { useNavigate } from 'react-router-dom';
 const AppSubmenu = (props:any) => {
     const location = useLocation();
 
@@ -108,10 +109,11 @@ const AppSubmenu = (props:any) => {
 }
 
 export const AppMenu = (props:any) => {
+    const nav = useNavigate();
 
     return (
         <>
-            <div className="profile-app-menu-controller">
+            <div className="profile-app-menu-controller cp" onClick={() => nav('/profile')}>
                 <img src={profilePic} />
                 <span className='title'>Nannie Nelson</span>
                 <span className="f-13 gray">nannieNe1996@gmail.com</span>
