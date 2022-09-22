@@ -1,0 +1,182 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin Wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+
+.main-teacher-profile-controller {
+    .react-switch-handle {
+        border: none !important;
+        box-shadow: none !important
+    }
+    @include Flex(row);
+    padding-top: .8rem;
+    .details-controller {
+        @include Flex(column);
+        flex: 8;
+        .head-details {
+            @include Flex(column);
+            .detail {
+                width: 100%;
+                justify-content: space-between;
+                @include Wrap();
+                position: relative;
+                bottom: 3rem;
+                padding: 0 0 1rem 2rem;
+                .controller {
+                    @include Flex(row);
+                    button {
+                        border: .15rem solid var(--gold) !important;
+                        color: var(--gold) !important;
+                        height: 40px;
+                    }
+                    .profile {
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 50%;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                            border-radius: 50%;
+                        }
+                    }
+                    .child {
+                        @include Flex(column);
+                        justify-content: center;
+                        &:last-child {
+                            justify-content: flex-end;
+                            align-items: flex-start;
+                            margin-left: 1rem;
+                            position: relative;
+                        }
+                        .history-controller {
+                            min-width: 200px;
+                            margin-left: 1rem;
+                            @include Flex(column);
+                                position: absolute;
+                            bottom: -10rem;
+                            left: -15rem;
+                            .item {
+                                width: 100%;
+                                max-width: 375px;
+                                @include Flex(column);
+                                border-radius: 10px;
+                                padding: 1rem;
+                                margin-bottom:  1rem;
+                                .controller {
+                                    @include Flex(row);
+                                    justify-content: flex-start;
+                                    color: var(--text);
+                                    margin-bottom: 1rem;
+                                    i {
+                                        margin-right: 1rem;
+                    
+                                    }
+                                }
+                    
+                            }
+                        }
+                        height: 100%;
+                    }
+                }
+            }
+            .back-light {
+                opacity: .9;
+                img {
+                    border-radius: 5px;
+                    width: 100%;
+                    max-height: 200px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+
+        }
+
+        .description-box-controller {
+            @include Wrap();
+            .description-box {
+                @include Flex(column);
+                justify-content: space-between;
+                height: 100%;
+                padding:  1rem;
+                background: var(--surface-card);
+                border-radius: 10px;
+                align-items: center;
+                justify-content: center;
+                svg {
+                    width: 40px;
+                }
+            }
+        }
+
+        .tran-line-controller {
+            @include Flex(column);
+            height: 100%;
+            justify-content: space-around;
+            .box {
+                width: 100%;
+                height: 100%;
+                min-height: 160px;
+                background: var(--surface-card);
+                padding: 1rem;
+                @include Flex(row);
+                margin-bottom: 1rem;
+                border-radius: 10px;
+                position: relative;
+                align-items: center;
+                overflow: hidden;
+                svg {
+                    position: absolute;
+                    top: 20px;
+                    right: 0;
+                }
+                &:first-child {
+                    svg {
+                        position: absolute;
+                        top: -60px;
+                        right: 0;
+                    }
+                }
+            }
+        }
+
+        .about-me-controller {
+            width: 100%;
+            @include Flex(row);
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 1rem;
+            position: relative;
+            bottom: 2rem;
+            .side {
+                @include Flex(column);
+                .about-me-paragraph {
+                    margin-bottom: 1rem;
+                    padding-bottom: 1rem;
+                    border-bottom: .15rem solid var(--dark-border);
+                }
+              
+            }
+            p {
+                line-height: 1.7;
+            }
+        }
+    }
+   
+    
+    
+}

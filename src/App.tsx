@@ -27,6 +27,9 @@ import ShowVideoScreen from './pages/videos/showVideo/showVideoScreen';
 import EductionRoomScreen from './pages/eduction/room/EductionRoomScreen';
 import ProfileScreen from './pages/profile/ProfileScreen';
 import Teachers from './pages/teachers/teachers';
+import SavedEventAndVideos from './pages/saved/savedEventAndVideosScreen';
+import { RoadMapScreen } from './pages/roadMap/roadMapScreen';
+import TeacherProfileScreen from './pages/teacherProfile/teacherProfileScreen';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -127,7 +130,13 @@ const App = () => {
             items: [
                 {label: 'Events', icon: 'fa-sharp fa-solid fa-lines-leaning', to: '/events' ,},
                 {label: 'Teachers', icon: 'fa-sharp fa-solid fa-graduation-cap', to:'/teachers'},
-                {label: 'Videos', icon: 'fa-brands fa-youtube',to:'/videos'}
+                {label: 'Videos', icon: 'fa-brands fa-youtube',to:'/videos'},
+                {label: 'Saved', icon: 'pi pi-bookmark', items:[
+                    {label:'Saved Events' , icon : 'fa-sharp fa-solid fa-lines-leaning' , to:'/savedEvents'},
+                    {label:'Saved Videos' , icon : 'fa-brands fa-youtube' , to:'/savedVideos'},
+                ]},
+                {label: 'Road Map', icon: 'pi pi-map',to:'/roadMap'},
+
             ]
         },
     ];
@@ -182,6 +191,11 @@ const App = () => {
                             <Route path="/room/:id" element={<EductionRoomScreen />} />
                             <Route path="/profile" element={<ProfileScreen />} />
                             <Route path="/teachers" element={<Teachers />} />
+                            <Route path="/savedVideos" element={<SavedEventAndVideos type={1} />} />
+                            <Route path="/savedEvents" element={<SavedEventAndVideos type={2} />} />
+                            <Route path="/roadMap" element={<RoadMapScreen />} />
+                            <Route path="/teacherProfile" element={<TeacherProfileScreen />} />
+                            
                         </Routes>
                     </Suspense>
 

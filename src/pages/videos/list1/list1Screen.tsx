@@ -20,6 +20,7 @@ import post8 from '../../../assets/imgs/youtube/8.webp';
 import {data} from '../listVideos.json';
 import { SelectButton } from 'primereact/selectbutton';
 import { useNavigate } from 'react-router-dom';
+import VideoItemComponent from '../../../components/global/videoItem/VideoItemComponent';
 
 export const GetImageVideosTemplate = ({index} : {index:number}) => {
     let image ;
@@ -123,13 +124,13 @@ const ListVideos1Screen = () => {
                                     <GetImageVideosTemplate index={index + 1} />
                                 </div>
                                 <div className="details-controller">
-                                    <div className="child" style={{minWidth:'fit-content'}}>
+                                    <div className="child" style={{minWidth:'fit-content'}} onClick={()=> nav('/teacherProfile')}>
                                         <GetImageVideosTemplate index={index + 1} />
                                     </div>
                                     <div className="child">
                                         <span className='title'>{item.label}</span>
                                         <div className="time-controller">
-                                            <span className="owner">{item.owner}</span>
+                                            <span className="owner" onClick={()=> nav('/teacherProfile')}>{item.owner}</span>
                                             <div>
                                                 <span>{item.views} views</span>
                                                 <span>{item.time}</span>
@@ -140,29 +141,7 @@ const ListVideos1Screen = () => {
                             </div>
                             :
                             <div className="col-lg-4 col-xl-3 cp">
-                                <div className="item-main-controller-alt">
-                                    <div onClick={()=> nav(`/showVideo/${index}`)}>
-                                    <GetImageVideosTemplate index={index + 1} />
-                                    </div>
-                                    <div className="text-controller">
-                                        <div className="controller">
-                                            <div className="pl-2 pt-2">
-                                                <span className='f-14 name'>{item.owner}</span>
-                                            </div>
-                                            <div className="profile">
-                                                <GetImageVideosTemplate index={index + 1} />
-                                            </div>
-                                        </div>
-                                        <div className="p-2">
-                                            <div className="controller title">
-                                                <span className="f-18">{item.label}</span>
-                                            </div>
-                                            <div className="controller">
-                                                <span className="f-14 gray">{item.views} views - {item.date}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <VideoItemComponent index={index} item={item} />
                             </div>
                             }
                             </>

@@ -5,9 +5,10 @@ import { PrimeIcons } from 'primereact/api';
 import { Button } from 'primereact/button';
 import {data} from '../listVideos.json'
 import { GetImageVideosTemplate } from '../list1/list1Screen';
+import { useNavigate } from 'react-router-dom';
 
 const ShowVideoScreen = () => {
-   
+   const nav = useNavigate();
     return (
         <>
             <div className="show-video-controller">
@@ -94,12 +95,12 @@ const ShowVideoScreen = () => {
                                 <div className="list-controller">
                                     {data.map((item , index) => (
                                         <div className="item cp">
-                                            <div className="child">
+                                            <div className="child" onClick={()=> nav('/teacherProfile')}>
                                                 <GetImageVideosTemplate index={index + 1} />
                                             </div>
                                             <div className="child">
                                                 <span className="f-16 fw-b">{item.label}</span>
-                                                <span className="f-13">{item.owner}</span>
+                                                <span className="f-13" onClick={()=> nav('/teacherProfile')}>{item.owner}</span>
                                                 <span className='mt-2 f-13 gray'>{item.time} - {item.views} views</span>
                                             </div>
                                         </div>

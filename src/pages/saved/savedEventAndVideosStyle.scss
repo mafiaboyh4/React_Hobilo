@@ -1,0 +1,22 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+@mixin Wrap () {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+
+
+
+.saved-main-controller {
+    @include Wrap();
+    padding: 1rem;
+}

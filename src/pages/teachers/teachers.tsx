@@ -75,9 +75,9 @@ const Teachers = () => {
                                         <div className="text-controller">
                                             <div className="controller">
                                                 <div className="pl-2 pt-2">
-                                                    <span className='f-14 name'>{item.owner}</span>
+                                                    <span onClick={()=> nav('/teacherProfile')} className='f-14 name'>{item.owner}</span>
                                                 </div>
-                                                <div className="profile">
+                                                <div className="profile" onClick={()=> nav('/teacherProfile')}>
                                                     <GetImageVideosTemplate index={index + 1} />
                                                 </div>
                                             </div>
@@ -113,9 +113,9 @@ const Teachers = () => {
                                         <div className="text-controller">
                                             <div className="controller">
                                                 <div className="pl-2 pt-2">
-                                                    <span className='f-14 name'>{item.owner}</span>
+                                                    <span className='f-14 name' onClick={()=> nav('/teacherProfile')}>{item.owner}</span>
                                                 </div>
-                                                <div className="profile">
+                                                <div className="profile" onClick={()=> nav('/teacherProfile')}>
                                                     <GetImageVideosTemplate index={index + 1} />
                                                 </div>
                                             </div>
