@@ -16,7 +16,12 @@
 }
 
 .main-profile-controller {
-    @include Wrap();
+    @media (max-width:1685px) {
+        @include Flex(column)
+    }
+    @media (min-width:1685px) {
+        @include Wrap();
+    }
     padding-top: .8rem;
     .details-controller {
         @include Flex(column);
@@ -137,11 +142,19 @@
     }
     .history-controller {
         flex: 3;
-        @include Flex(column);
-        padding: 0 1rem 1rem;
-        border-left: .15rem solid var(--dark-border);
+        @media (min-width:1685px) {
+            @include Flex(column);
+            padding: 0 1rem 1rem;
+            border-left: .15rem solid var(--dark-border);
+        }
+        @media (max-width:1685px) {
+            @include Wrap();
+            justify-content: space-between;
+        }
         margin-left: 1rem;
         .item {
+            width: 100%;
+            max-width: 375px;
             @include Flex(row);
             border-radius: 10px;
             padding: 1rem;

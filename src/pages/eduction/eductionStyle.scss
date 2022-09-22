@@ -5,6 +5,7 @@
 }
 
 .eduction-controller {
+    padding-top: 1rem;
     @include Flex(column);
     .box {
         background: var(--surface-overlay);

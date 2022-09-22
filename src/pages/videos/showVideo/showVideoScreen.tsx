@@ -59,6 +59,8 @@ const ShowVideoScreen = () => {
                                                 <i className={`${PrimeIcons.THUMBS_DOWN} gray f-20 cp`}></i>
                                                 <div className="px-2"></div>
                                                 <i className={`${PrimeIcons.COMMENT} gray f-20 cp`}></i>
+                                                <div className="px-2"></div>
+                                                <i className={`${PrimeIcons.SHARE_ALT} gray f-20 cp`}></i>
                                             </div>
                                         </div>
                                     </div>

@@ -1,0 +1,134 @@
+@mixin Flex ($direction ) {
+    display: flex;
+    flex-direction: $direction;
+}
+@mixin Wrap () {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin DefaultPanel {
+    padding: 1rem;
+    background: var(--surface-card);
+    @include Flex(column);
+    border-radius: 10px
+}
+
+
+.main-teacher-controller {
+
+    @include Flex(column);
+    .header {
+        @include Flex(column);
+        .swiper-controller {
+            display: block;
+            width: 100%;
+            padding: 1rem 0;
+            border-bottom: .15rem solid var(--dark-border);
+            .swiper {
+                margin-left: 0;
+            }
+            .swiper-item {
+                @include Flex(column);
+                align-items: center;
+                justify-content: center;
+                width: 120px;
+
+                .img-controller {
+                    width: 83px;
+                    height: 83px;
+                    border-radius: 50%;
+                    border: .2rem solid var(--dark-border);
+                    &.border-red {
+                        border: .2rem solid var(--red);
+                    }
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                span {
+                    width: 100%;
+                    display: block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+
+            }
+        }
+    }
+
+    .main-list-controller {
+        padding: 1rem;
+        @include Wrap();
+        border-bottom: .15rem solid var(--dark-border);
+        .swiper {
+            margin-left: 0;
+        }
+        .item-main-controller-alt {
+            position: relative;
+            width: 100%;
+            max-width:250px;
+            z-index: 2;
+            width: 100%;
+            background: var(--surface-card);
+            @include Flex(column);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            img {
+                width: 100%;
+            }
+            .text-controller {
+                @include Flex(column);
+                width: 100%;
+                .controller {
+                    position: relative;
+                    @include Flex(row);
+                    justify-content: space-between;
+                    &.title {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        margin-bottom: 0.3rem;
+                        span {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+
+                        }
+                    }
+                    .name {
+                        color: #888888;
+                    }
+                    .profile {
+                        width: 65px;
+                        height: 65px;
+                        border-radius: 50%;
+                        padding: .4rem;
+                        position: absolute;
+                        background: var(--surface-card);
+                        right: .5rem;
+                        bottom: .3rem;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 50%;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -89,7 +89,7 @@ const ProfileScreen = () => {
                                         </span>
                                     </div>
                                     <div className="flex-1 align-items-center" style={{overflow:'hidden'}}>
-                                    <svg width="300" height="302" viewBox="0 0 300 302" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="300" height="352" viewBox="0 0 300 302" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M40.9398 93.8863C54.3215 108.586 59.0581 117.686 72.4398 132.386C85.8215 147.086 93.0582 103.686 106.44 118.386C119.822 133.086 132.058 94.6863 145.44 109.386C158.822 124.086 177.058 114.266 190.44 128.966C203.822 143.666 231.558 120.686 244.94 135.386C258.321 150.086 277.94 140.386 288.44 159.886L288.44 180.5L40.9398 175.5L40.9398 93.8863Z" fill="url(#paint0_linear_6_16)" stroke="url(#paint1_linear_6_16)" stroke-width="3"/>
                                         <defs>
                                         <linearGradient id="paint0_linear_6_16" x1="135.5" y1="-65" x2="106.5" y2="174.5" gradientUnits="userSpaceOnUse">
@@ -140,7 +140,9 @@ const ProfileScreen = () => {
                 </div>
             </div>
             <div className="history-controller">
-                <span className="f-18 mb-2">Education History </span>
+                <div className="col-12">
+                    <span className="f-18 mb-2">Education History </span>
+                </div>
                 <div className="item">
                     <div className="side">
                         <div className="yellow mb-1 f-14 w-100">
